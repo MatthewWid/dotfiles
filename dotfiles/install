@@ -1,0 +1,179 @@
+#!/bin/bash
+
+sudo -v
+
+echo "=== Dotfile and fresh machine setup by Matt W. ==="
+echo -e "\
+	Warning!\n \
+	This script will update packages and overwrite your dotfiles, configuration files, SSH keys and more.\n \
+	Make a backup before running!"
+
+read -p "Are you sure you want to continue? (y/n) " -n 1 -r
+echo
+
+if ! echo "$REPLY" | egrep -q "^[Yy]$"; then
+	exit 0
+fi
+
+export DEBIAN_FRONTEND=noninteractive 
+
+# Update packages
+echo "== Updating packages =="
+sudo apt -y install software-properties-common
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo add-apt-repository -y multiverse
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+sudo add-apt-repository -y ppa:wslutilities/wslu
+sudo apt update
+sudo apt -y upgrade
+sudo apt autoremove
+sudo apt autoclean
+
+# Install packages
+echo "== Installing new packages =="
+sudo apt -y install \
+	curl \
+	wget \
+	tree \
+	tmux \
+	tcpdump \
+	tar \
+	zip \
+	vim \
+	nmap \
+	neofetch \
+	software-properties-common \
+	source-highlight \
+	less \
+	jq \
+	ca-certificates \
+	dos2unix \
+	net-tools \
+	figlet \
+	cowsay \
+	xclip \
+	git \
+	bash-completion \
+	xdg-utils \
+	silversearcher-ag \
+	python3 \
+	python3-pip \
+	wslu \
+	ranger \
+	ffmpeg \
+	sqlite3 \
+	neovim \
+	bat \
+	xsel \
+	ttf-mscorefonts-installer \
+	make \
+	cmake \
+	ninja-build \
+	g++-11 \
+	gdb \
+	uidmap \
+	xfsprogs \
+	cloc \
+	apache2-utils \
+	zsh \
+	qrencode \
+	keynav \
+	clangd-12 \
+	httrack
+
+sudo -v
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# Install zsh common theme
+wget -O $ZSH_CUSTOM/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme
+
+# Install Oh My Zsh plugins
+git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+
+# Node, package managers and global packages
+echo "== Installing Node and other package managers =="
+mv ~/.bashrc ~/.bashrc.bak
+curl -L https://git.io/n-install | bash -s -- -y latest lts
+source ~/.bashrc
+bash -c "n latest ; npm i -g pnpm yarn open-cli wsl-open lorem-ipsum tsx @angular/cli"
+
+# Dotfiles, configuration files and scripts
+echo "== Fetching dotfiles and scripts =="
+curl -sL mwidd.com/dotfiles/sync | bash -s -- fetch
+touch ~/.hushlogin
+
+# Vim plugin manager for NeoVim
+echo "== Installing NeoVim plugin manager =="
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+	--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# NeoVim plugin install without opening interactively
+echo "== Installing NeoVim plugins =="
+DISPLAY= python3 -v -m pip install --user --upgrade pynvim
+nvim +'PlugInstall --sync' +qa
+
+# Install Rust
+echo "== Installing Rust =="
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+
+# Link clangd-12 to clangd command
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
+
+# Install tmux plugin manager
+echo "== Installing tmux plugin manager =="
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+~/.tmux/plugins/tpm/bin/install_plugins
+
+# Install tmuxinator
+gem install tmuxinator
+
+# Install fzf
+echo "== Installing fzf =="
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
+
+# Install Docker with rootless daemon
+echo "== Installing Docker with rootless daemon =="
+curl -fsSL https://get.docker.com | sh
+dockerd-rootless-setuptool.sh install
+
+# Install ChatGPT CLI
+echo "== Installing ChatGPT CLI =="
+curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
+
+# install htmlq
+cargo install htmlq
+
+# Install yq
+echo "== Installing yq =="
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+
+# Link batcat binary to bat
+echo "== Symlinking bat binary to proper path =="
+sudo ln -s $(which batcat) /usr/bin/bat
+
+# Install ripgrep without conflicts with bat
+echo "== Installing ripgrep without conflicts =="
+sudo apt-get download ripgrep
+sudo dpkg --force-overwrite -i ripgrep*.deb
+
+# Symlink the latest g++ executable
+echo "== Symlinking g++ to latest version =="
+sudo ln -sf $(which g++-11) $(which g++)
+
+# Update font cache to use Microsoft fonts
+sudo fc-cache -f
+
+# Docker completions
+mkdir -p ~/.oh-my-zsh/completions
+docker completion zsh > ~/.oh-my-zsh/completions/_docker
+
+# Generate local SSH keys
+echo "== Generating SSH keys =="
+ssh-keygen -q -N "" -t ed25519 -a 100 -f ~/.ssh/id_ed25519 <<< "n" > /dev/null
+
+echo "== Done! =="

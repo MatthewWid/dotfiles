@@ -1,0 +1,13 @@
+[user]
+	name = Matthew W.
+	email = matthew.widdi@gmail.com
+[core]
+	autocrlf = true
+	excludesFile = /home/matt/.gitignore-global
+	eol = lf
+[rebase]
+	autoStash = true
+[push]
+	default = current
+[init]
+	defaultBranch = master

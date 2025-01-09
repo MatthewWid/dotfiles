@@ -1,0 +1,16 @@
+# Custom Notes
+*.note*
+*.ignore*
+
+# Vim
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+*~
+.vim
+
+# WSL Magic
+:Zone.Identifier

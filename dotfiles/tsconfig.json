@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Default TypeScript Configuration",
+	"include": ["./src/**/*"],
+	"exclude": ["./src/**/*.test.ts", "./src/**/*.spec.ts"],
+	"compilerOptions": {
+		"lib": ["ES2022"],
+		"target": "ES2021",
+		"sourceMap": true,
+		"declaration": true,
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}

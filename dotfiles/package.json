@@ -1,0 +1,16 @@
+{
+	"name": "boilerplate",
+	"description": "",
+	"version": "0.1.0",
+	"keywords": [],
+	"author": "Matthew W. <matthew.widdi@gmail.com>",
+	"license": "MIT",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": "22"
+	},
+	"scripts": {},
+	"dependencies": {},
+	"devDependencies": {}
+}

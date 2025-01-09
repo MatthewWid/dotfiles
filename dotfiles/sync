@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Fetch a file, backup and delete existing copies and create directories.
+setup() {
+	TYPE=$1
+	SRC=$2
+	DST=$3
+
+	# If no destination is set, place in the home directory
+	if [[ -z $3 ]]; then
+		DST="$HOME/$(basename $SRC)"
+	fi
+
+
+	# Back up (copy) existing destination files
+	if [[ -e $DST ]]; then
+		echo "Backing up existing file \"$(basename $DST)\"."
+		cp $DST "$DST.bak"
+		rm $DST
+	fi
+
+	# Create nested directories if they do not exist
+	mkdir -p $(dirname $DST)
+
+	if [[ $TYPE == "fetch" ]]; then
+		# Fetch all files from remote website
+		echo "Fetching \"$(basename $SRC)\" to \"$DST\"."
+		curl -sL mwidd.com/dotfiles/$SRC -o $DST
+	elif [[ $TYPE == "link" ]]; then
+		# Link all files from current directory to destination
+		echo "Syncing \"$(basename $SRC)\" to \"$DST\"."
+		ln -sf "$(realpath -m $SRC)" "$(realpath $DST)"
+	elif [[ $TYPE == "clear" ]]; then
+		echo "Clearing \"$(basename $SRC)\" from \"$DST\"."
+		# Clear existing files
+		# To delete backup files, too, add: `rm "$DST.bak"` here and re-run
+		rm -f $DST
+	fi
+}
+
+# Download/Symlink all configuration files to their appropriate locations
+run() {
+	if [[ $1 != "fetch" && $1 != "link" && $1 != "clear" ]]; then
+		echo "Improper sync type given: \"$1\"."
+		exit 1
+	fi
+
+	setup $1 .tmux.conf & \
+	setup $1 .gitignore-global & \
+	setup $1 .gitconfig & \
+	setup $1 bin/devenv ~/bin/devenv & \
+	setup $1 coc-settings.json ~/.config/nvim/coc-settings.json & \
+	setup $1 .fdignore & \
+	setup $1 .inputrc & \
+	setup $1 .gdbinit & \
+	setup $1 init.vim ~/.config/nvim/init.vim & \
+	setup $1 .bashrc & \
+	setup $1 .zshrc & \
+	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh
+	setup $1 common.zsh-theme $ZSH_CUSTOM/themes/common.zsh-theme
+	wait
+}
+
+run $1
