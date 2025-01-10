@@ -89,12 +89,6 @@ encode() { printf %s "$1" | jq -s -R -r @uri; }
 awscheck() { aws sts get-caller-identity; }
 delzone() { find . -name '*:Zone.Identifier' -delete; }
 
-# WSL
-wsldns() { cat /etc/resolv.conf | grep "nameserver" | cut -d " " -f 2; }
-wslip() { ip addr show eth0 | grep --colour=never -oP '(?<=inet\s)\d+(\.\d+){3}'; }
-wslhome() { builtin cd $(wslpath "$(wslvar USERPROFILE)"); }
-wsldown() { powershell.exe -Command "wsl --shutdown"; }
-
 # Git
 alias gint="git init"
 alias gclo="git clone"
@@ -262,6 +256,12 @@ tarc() { tar -czvf "$1.tar.gz" $1 }
 alias ytdl="yt-dlp"
 alias ytdlb="ytdl -f bv+ba"
 alias ytdla="ytdl -x"
+
+# WSL
+wsldns() { cat /etc/resolv.conf | grep "nameserver" | cut -d " " -f 2; }
+wslip() { ip addr show eth0 | grep --colour=never -oP '(?<=inet\s)\d+(\.\d+){3}'; }
+wslhome() { builtin cd $(wslpath "$(wslvar USERPROFILE)"); }
+wsldown() { powershell.exe -Command "wsl --shutdown"; }
 
 # Powershell
 alias pss="powershell.exe"
