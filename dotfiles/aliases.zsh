@@ -32,7 +32,7 @@ alias nv="$(which n)"
 alias n="node"
 alias v="$EDITOR"
 alias v.="v ."
-alias t="touch"
+t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
 alias d="mkdir -p"
 dcd() { d $* && cd "${@:$#}"; }
 alias cd-="cd -"
