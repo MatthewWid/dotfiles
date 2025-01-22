@@ -6,6 +6,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Theme to load
 ZSH_THEME="common"
 
+# Set zsh autocomplete cache directory to somewhere other than $HOME
+export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
+
 # Hyphen-insensitive completion. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
