@@ -238,7 +238,8 @@ alias mux="tmuxinator"
 
 # docker
 alias doc="docker-compose"
-alias docu="docker-compose up -d && docker-compose logs -f"
+alias docu="docker-compose up -d"
+alias docul="docu && docker-compose logs -f"
 alias docd="docker-compose down"
 
 # tar
