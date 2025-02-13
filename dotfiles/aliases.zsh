@@ -80,6 +80,7 @@ gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree
 encode() { printf %s "$1" | jq -s -R -r @uri; }
 awscheck() { aws sts get-caller-identity; }
 delzone() { find . -name '*:Zone.Identifier' -delete; }
+nodeignore() { wget --quiet -O .gitignore https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/Node.gitignore; }
 
 # Git
 alias gint="git init"
@@ -171,15 +172,19 @@ alias ndoc="npm run doc"
 alias pnint="pnpm init"
 alias pnins="pnpm install"
 alias pna="pnpm add"
+alias pnfa="pnpm add --filter"
 alias pnar="pna -r"
 alias pnad="pnpm add -D"
+alias pnfad="pnpm add -D --filter"
 alias pnadr="pnad -r"
 alias pnap="pnpm add --save-peer"
 alias pnu="pnpm remove"
+alias pnfu="pnpm remove --filter"
 alias pnur="pnu -r"
 alias pnga="pnpm add --global"
 alias pngu="pnpm remove --global"
 alias pnr="pnpm run"
+alias pnfr="pnpm run --filter"
 alias pnrr="pnr --recursive run"
 alias pnd="pnpm run dev"
 alias pns="pnpm run start"
