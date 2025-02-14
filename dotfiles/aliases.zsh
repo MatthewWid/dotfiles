@@ -81,6 +81,7 @@ encode() { printf %s "$1" | jq -s -R -r @uri; }
 awscheck() { aws sts get-caller-identity; }
 delzone() { find . -name '*:Zone.Identifier' -delete; }
 nodeignore() { wget --quiet -O .gitignore https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/Node.gitignore; }
+uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
 
 # Git
 alias gint="git init"
