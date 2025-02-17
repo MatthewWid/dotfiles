@@ -51,6 +51,7 @@ alias tsxw="clear && tsx watch"
 alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
+alias red="redis-cli"
 
 # New commands
 alias cls="printf \"\033c\""
