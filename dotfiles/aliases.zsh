@@ -81,8 +81,11 @@ gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree
 encode() { printf %s "$1" | jq -s -R -r @uri; }
 awscheck() { aws sts get-caller-identity; }
 delzone() { find . -name '*:Zone.Identifier' -delete; }
-nodeignore() { wget --quiet -O .gitignore https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/Node.gitignore; }
 uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
+
+# Dotfiles
+getnodeignore() { wget --quiet -O .gitignore https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/Node.gitignore; }
+gettsconfig() { wget --quiet -O tsconfig.json https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/tsconfig.json }
 
 # Git
 alias gint="git init"
@@ -202,6 +205,7 @@ pnpg() { pnpm pkg get $* | jq; }
 pnps() { pnpm pkg set "$1=$2"; }
 alias pnpd="pnpm pkg delete"
 alias pnc="pnpm create"
+alias ppk="pnpm pkg"
 
 # Yarn
 alias yint="yarn init -y"
