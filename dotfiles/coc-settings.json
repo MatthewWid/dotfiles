@@ -11,11 +11,6 @@
 			"command": "csharp-ls",
 			"filetypes": "cs",
 			"rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
-		},
-		"graphql": {
-			"command": "graphql-lsp",
-			"args": ["server", "-m", "stream"],
-			"filetypes": ["typescript", "typescriptreact", "graphql"]
 		}
 	},
 	"diagnostic.warningSign": ">>",

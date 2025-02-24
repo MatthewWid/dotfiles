@@ -205,7 +205,8 @@ pnpg() { pnpm pkg get $* | jq; }
 pnps() { pnpm pkg set "$1=$2"; }
 alias pnpd="pnpm pkg delete"
 alias pnc="pnpm create"
-alias ppk="pnpm pkg"
+alias pnpk="pnpm pkg"
+alias pnab="pnpm approve-builds"
 
 # Yarn
 alias yint="yarn init -y"
