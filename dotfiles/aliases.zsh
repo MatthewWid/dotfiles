@@ -89,7 +89,7 @@ gettsconfig() { wget --quiet -O tsconfig.json https://github.com/MatthewWid/dotf
 
 # Git
 alias gint="git init"
-alias gclo="git clone"
+gclo() { git clone "$@"; cd "$(basename "$1" .git)"; }
 alias gl="git log --pretty=format:'%C(yellow)%h %Cblue%ad %Cgreen%d %Creset%s' --date=relative"
 alias gla="gl --all --graph"
 alias gll="git log"
@@ -104,7 +104,10 @@ alias ga.="git add -A"
 alias gap="git add --patch"
 alias gd="git diff"
 alias gdc="git diff --cached"
+# See diff of a commit (HEAD by default)
 gdic() { git diff-tree --color=always -p ${1:-HEAD} ${2:-$(git rev-parse --show-toplevel)} | less -R; }
+# See status (files changed) of a commit (HEAD by default)
+gsic() { git diff-tree -r --no-commit-id --name-status ${1:-HEAD}; }
 alias gdicm="gdic master..HEAD"
 alias gdcm="git diff-tree --no-commit-id --name-status -r"
 alias gcm="git commit -m"
