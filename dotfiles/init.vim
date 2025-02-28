@@ -327,16 +327,20 @@ let g:winresizer_start_key='<C-w>r'
 " Increase vertical resize increment
 let g:winresizer_vert_resize='5'
 
-" Default to light mode
-let g:mkdp_theme = 'light'
 
 " ------------------------------ markdown-preview
+
+" Default to light mode
+let g:mkdp_theme = 'light'
 
 " Don't close preview when closing buffer
 let g:mkdp_auto_close=0
 
 " Set server to listen on all addresses to make WSL <-> Windows connection work
 let g:mkdp_open_to_the_world=1
+
+" Fix browser open in WSL
+let g:mkdp_browser="wsl-open"
 
 " ------------------------------ nvim-spectre
 
