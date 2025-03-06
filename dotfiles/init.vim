@@ -340,7 +340,7 @@ let g:mkdp_auto_close=0
 let g:mkdp_open_to_the_world=1
 
 " Fix browser open in WSL
-let g:mkdp_browser="wsl-open"
+" let g:mkdp_browser="wsl-open"
 
 " ------------------------------ nvim-spectre
 
