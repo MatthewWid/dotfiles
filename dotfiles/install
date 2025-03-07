@@ -79,7 +79,8 @@ sudo apt -y install \
 	qrencode \
 	keynav \
 	clangd-12 \
-	httrack
+	httrack \
+	tshark
 
 sudo -v
 
