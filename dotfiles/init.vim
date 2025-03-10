@@ -60,7 +60,7 @@ Plug 'josa42/vim-lightline-coc'
 " Plug 'sheerun/vim-polyglot'
 
 " Smarter syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Status line customisation
 Plug 'itchyny/lightline.vim'
