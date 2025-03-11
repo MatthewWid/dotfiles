@@ -60,7 +60,7 @@ Plug 'josa42/vim-lightline-coc'
 " Plug 'sheerun/vim-polyglot'
 
 " Smarter syntax highlighting
-" Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Status line customisation
 Plug 'itchyny/lightline.vim'
@@ -147,6 +147,11 @@ require("nvim-tree").setup({
       trash = false,
     },
   },
+	actions = {
+		open_file = {
+			resize_window = false
+		}
+	}
 })
 EOF
 
@@ -182,8 +187,32 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  auto_install = true,
+  ensure_installed = {
+		"json",
+		"json5",
+		"jsonc",
+		"jsonnet",
+		"javascript",
+		"jsdoc",
+		"lua",
+		"typescript",
+		"vim",
+		"terraform",
+		"regex",
+		"nginx",
+		"markdown",
+		"markdown_inline",
+		"git_rebase",
+		"gitcommit",
+		"dockerfile",
+		"csv",
+		"c_sharp",
+		"bash",
+		"bash",
+		"astro",
+	},
+  sync_install = true,
+  auto_install = false,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
