@@ -124,9 +124,8 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 # Local bin path
 export PATH="$HOME/.local/bin:$PATH"
 
-# Go bin path
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+# Golang bin path
+export PATH="$PATH:/usr/local/go/bin"
 
 # CTRL + Backspace, CTRL + Delete
 bindkey '^H' backward-kill-word
@@ -150,19 +149,11 @@ setopt menu_complete
 # Do not prompt before using rm *
 setopt rmstarsilent
 
-# Add Go executables to path
-export PATH=$PATH:/usr/local/go/bin
-
 # Autocompletion for pnpm
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # Local environment variables
 [[ -f ~/.localrc ]] && . ~/.localrc || true
-
-# Node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -171,9 +162,6 @@ export NVM_DIR="$HOME/.nvm"
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 	exec tmux
 fi
-
-# add Pulumi to PATH
-export PATH="$PATH:/home/matt/.pulumi/bin"
 
 # add .NET Core tools to PATH
 export PATH="$PATH:/home/matt/.dotnet/tools"

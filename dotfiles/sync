@@ -25,7 +25,7 @@ setup() {
 	if [[ $TYPE == "fetch" ]]; then
 		# Fetch all files from remote website
 		echo "Fetching \"$(basename $SRC)\" to \"$DST\"."
-		curl -sL mwidd.com/dotfiles/$SRC -o $DST
+		curl -sL https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles/$SRC -o $DST
 	elif [[ $TYPE == "link" ]]; then
 		# Link all files from current directory to destination
 		echo "Syncing \"$(basename $SRC)\" to \"$DST\"."
@@ -39,6 +39,7 @@ setup() {
 }
 
 # Download/Symlink all configuration files to their appropriate locations
+# If using the `sync` option, should be run from within the Dropbox `dotfiles` directory
 run() {
 	if [[ $1 != "fetch" && $1 != "link" && $1 != "clear" ]]; then
 		echo "Improper sync type given: \"$1\"."

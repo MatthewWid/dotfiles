@@ -32,6 +32,7 @@ sudo apt autoclean
 # Install packages
 echo "== Installing new packages =="
 sudo apt -y install \
+	coreutils \
 	curl \
 	wget \
 	tree \
@@ -69,7 +70,7 @@ sudo apt -y install \
 	make \
 	cmake \
 	ninja-build \
-	g++-11 \
+	g++-14 \
 	gdb \
 	uidmap \
 	xfsprogs \
@@ -114,6 +115,12 @@ curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
 echo "== Installing NeoVim plugins =="
 DISPLAY= python3 -v -m pip install --user --upgrade pynvim
 nvim +'PlugInstall --sync' +qa
+
+# Install Golang
+echo "== Installing Golang =="
+wget https://go.dev/dl/go1.24.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz
+rm go1.24.1.linux-amd64.tar.gz
 
 # Install Rust
 echo "== Installing Rust =="
@@ -164,7 +171,7 @@ sudo dpkg --force-overwrite -i ripgrep*.deb
 
 # Symlink the latest g++ executable
 echo "== Symlinking g++ to latest version =="
-sudo ln -sf $(which g++-11) $(which g++)
+sudo ln -sf $(which g++-14) $(which g++)
 
 # Update font cache to use Microsoft fonts
 sudo fc-cache -f
