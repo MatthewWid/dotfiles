@@ -10,6 +10,8 @@ alias tcf="$EDITOR ~/.tmux.conf"
 alias gig="$EDITOR ~/.gitignore-global"
 alias ccs="$EDITOR ~/.config/nvim/coc-settings.json"
 alias vrc="$EDITOR ~/.config/nvim/init.vim"
+alias rcc="$EDITOR ~/.config/ranger/rc.conf"
+alias ric="$EDITOR ~/.config/ranger/rifle.conf"
 
 # Command modification
 alias lls="\ls -F --color -h $*" 

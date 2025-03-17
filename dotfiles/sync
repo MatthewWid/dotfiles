@@ -57,7 +57,12 @@ run() {
 	setup $1 init.vim ~/.config/nvim/init.vim & \
 	setup $1 .bashrc & \
 	setup $1 .zshrc & \
-	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh
+	setup $1 commands.py ~/.config/ranger/commands.py & \
+	setup $1 commands_full.py ~/.config/ranger/commands_full.py & \
+	setup $1 rc.conf ~/.config/ranger/rc.conf & \
+	setup $1 rifle.conf ~/.config/ranger/rifle.conf & \
+	setup $1 scope.sh ~/.config/ranger/scope.sh & \
+	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh & \
 	setup $1 common.zsh-theme $ZSH_CUSTOM/themes/common.zsh-theme
 	wait
 }

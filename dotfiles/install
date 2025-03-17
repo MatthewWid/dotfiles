@@ -81,7 +81,8 @@ sudo apt -y install \
 	keynav \
 	clangd-12 \
 	httrack \
-	tshark
+	tshark \
+	trash-cli
 
 sudo -v
 
