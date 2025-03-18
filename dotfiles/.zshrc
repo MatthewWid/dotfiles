@@ -171,3 +171,6 @@ source <(ng completion script)
 
 # Terraform CLI autocompletion
 complete -o nospace -C /usr/bin/terraform terraform
+
+# Disable cowsay in Ansible
+export ANSIBLE_NOCOWS=1

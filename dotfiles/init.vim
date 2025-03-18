@@ -267,7 +267,12 @@ let g:coc_global_extensions = [
 	\ 'coc-pairs',
 	\ 'coc-angular',
 	\ 'coc-biome',
+	\ '@yaegassy/coc-ansible',
 	\ ]
+
+let g:coc_filetype_map = {
+	\ 'yaml.ansible': 'ansible',
+	\ }
 
 " Use C-d and C-u to scroll hover description fields
 map <nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-d>"
@@ -686,3 +691,4 @@ autocmd BufNewFile,BufRead *.dockerfile set filetype=dockerfile
 autocmd BufNewFile,BufRead .localrc set filetype=zsh
 autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 autocmd BufNewFile,BufRead *.tf,*.tfvars set filetype=terraform
+autocmd BufNewFile,BufRead inventory.yaml,playbook.yaml set filetype=yaml.ansible
