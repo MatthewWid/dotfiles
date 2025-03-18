@@ -3,8 +3,10 @@
 " Install plugins
 call plug#begin()
 
+" Utility functions needed by other plugins
+Plug 'nvim-lua/plenary.nvim', { 'branch': 'master' }
+
 " Nord colour scheme for NeoVim
-" Plug 'shaunsingh/nord.nvim', { 'commit': '78f5f001709b5b321a35dcdc44549ef93185e024' }
 Plug 'shaunsingh/nord.nvim'
 
 " Sidebar file explorer with icons and git diff signs
@@ -42,12 +44,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Show coc.nvim diagnostics in lightline
 Plug 'josa42/vim-lightline-coc'
-"
-" Rust LSP
-" Plug 'rust-lang/rust.vim'
-
-" NGINX LSP
-" Plug 'yaegassy/coc-nginx', { 'do': 'yarn install --frozen-lockfile' }
 
 " LSP and code completion
 " Plug 'neovim/nvim-lspconfig'
@@ -55,12 +51,6 @@ Plug 'josa42/vim-lightline-coc'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
-
-" Syntax highlighting for a shit load of languages
-" Plug 'sheerun/vim-polyglot'
-
-" Smarter syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Status line customisation
 Plug 'itchyny/lightline.vim'
@@ -71,30 +61,25 @@ Plug 'itchyny/vim-gitbranch'
 " git-vim integration
 Plug 'tpope/vim-fugitive'
 
-" Code minimap
-" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-
 " Show colours next to hex strings
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-" Multi-cursor
-" Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 
 " Quickly temporarily toggle-maximize split windows
 Plug 'szw/vim-maximizer'
 
-" AI code assistant - official plugin
+" Smarter syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+" Official Copilot plugin
 Plug 'github/copilot.vim'
 
-" AI code assistant with more features and configuration
-" Plug 'zbirenbaum/copilot.lua'
+" AI code assistant
+Plug 'olimorris/codecompanion.nvim'
 
 " C# LSP
 " Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
-
-" Test
 
 " ------------------------------------------------------------ Plugin Settings 
 
@@ -149,7 +134,7 @@ require("nvim-tree").setup({
   },
 	actions = {
 		open_file = {
-			resize_window = false
+			resize_window = true
 		}
 	}
 })
@@ -162,10 +147,28 @@ command Nf NvimTreeFindFile
 nmap <silent> <C-b> :NvimTreeToggle<CR>
 
 " ------------------------------ copilot.vim
+" 
+" " Remap accept Copilot suggestion to <C-\>
+" imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
-" Remap accept Copilot suggestion to <C-\>
-imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" ------------------------------ codecompanion.nvim
+
+lua <<EOF
+require("codecompanion").setup({
+	strategies = {
+		chat = {
+			adapter = "copilot",
+		},
+		inline = {
+			adapter = "copilot",
+		},
+	},
+	opts = {
+		log_level = "TRACE",
+	},
+})
+EOF
 
 " ------------------------------ nerdcommenter
 
@@ -443,22 +446,12 @@ let g:lightline = {
   \ },
   \ }
 
-  " \     [ 'coc_status' ],
-  " \     [ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ],
-
 " Get truncated filename and change symbol
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
   return filename . modified
 endfunction
-
-" call lightline#coc#register()
-
-" Minimap configuration
-" let g:minimap_width = 10
-" let g:minimap_auto_start = 1
-" let g:minimap_auto_start_win_enter = 1
 
 " ------------------------------ vim-hexokinase
 
@@ -691,4 +684,4 @@ autocmd BufNewFile,BufRead *.dockerfile set filetype=dockerfile
 autocmd BufNewFile,BufRead .localrc set filetype=zsh
 autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 autocmd BufNewFile,BufRead *.tf,*.tfvars set filetype=terraform
-autocmd BufNewFile,BufRead inventory.yaml,playbook.yaml set filetype=yaml.ansible
+autocmd BufNewFile,BufRead inventory.yaml,inventory.yml,playbook.yaml,playbook.yml set filetype=yaml.ansible
