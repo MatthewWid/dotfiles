@@ -149,8 +149,8 @@ nmap <silent> <C-b> :NvimTreeToggle<CR>
 " ------------------------------ copilot.vim
 " 
 " " Remap accept Copilot suggestion to <C-\>
-" imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " ------------------------------ codecompanion.nvim
 
