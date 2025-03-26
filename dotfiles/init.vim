@@ -71,10 +71,7 @@ Plug 'szw/vim-maximizer'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " Official Copilot plugin
-Plug 'github/copilot.vim'
-
-" AI code assistant
-Plug 'olimorris/codecompanion.nvim'
+" Plug 'github/copilot.vim'
 
 " C# LSP
 " Plug 'OmniSharp/omnisharp-vim'
@@ -149,26 +146,26 @@ nmap <silent> <C-b> :NvimTreeToggle<CR>
 " ------------------------------ copilot.vim
 " 
 " " Remap accept Copilot suggestion to <C-\>
-imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
 " ------------------------------ codecompanion.nvim
 
-lua <<EOF
-require("codecompanion").setup({
-	strategies = {
-		chat = {
-			adapter = "copilot",
-		},
-		inline = {
-			adapter = "copilot",
-		},
-	},
-	opts = {
-		log_level = "TRACE",
-	},
-})
-EOF
+" lua <<EOF
+" require("codecompanion").setup({
+	" strategies = {
+		" chat = {
+			" adapter = "copilot",
+		" },
+		" inline = {
+			" adapter = "copilot",
+		" },
+	" },
+	" opts = {
+		" log_level = "TRACE",
+	" },
+" })
+" EOF
 
 " ------------------------------ nerdcommenter
 
