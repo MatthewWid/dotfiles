@@ -167,7 +167,9 @@ fi
 export PATH="$PATH:/home/matt/.dotnet/tools"
 
 # Angular CLI autocompletion
-source <(ng completion script)
+if command -v ng &> /dev/null; then
+	source <(ng completion script)
+fi
 
 # Terraform CLI autocompletion
 complete -o nospace -C /usr/bin/terraform terraform

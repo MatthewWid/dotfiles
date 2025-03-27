@@ -79,7 +79,6 @@ sudo apt -y install \
 	zsh \
 	qrencode \
 	keynav \
-	clangd-12 \
 	httrack \
 	tshark \
 	trash-cli
@@ -127,9 +126,6 @@ rm go1.24.1.linux-amd64.tar.gz
 echo "== Installing Rust =="
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
-
-# Link clangd-12 to clangd command
-sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 
 # Install tmux plugin manager
 echo "== Installing tmux plugin manager =="
