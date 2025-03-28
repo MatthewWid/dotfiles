@@ -96,9 +96,7 @@ git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-m
 
 # Node, package managers and global packages
 echo "== Installing Node and other package managers =="
-mv ~/.bashrc ~/.bashrc.bak
 curl -L https://git.io/n-install | bash -s -- -y latest lts
-source ~/.bashrc
 bash -c "n latest ; npm i -g pnpm yarn open-cli wsl-open lorem-ipsum tsx @angular/cli graphql-language-service-cli typescript-language-server markserv"
 
 # Dotfiles, configuration files and scripts

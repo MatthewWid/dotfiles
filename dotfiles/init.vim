@@ -45,13 +45,6 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Show coc.nvim diagnostics in lightline
 Plug 'josa42/vim-lightline-coc'
 
-" LSP and code completion
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-cmp'
-" Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'L3MON4D3/LuaSnip'
-" Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
-
 " Status line customisation
 Plug 'itchyny/lightline.vim'
 
@@ -70,11 +63,11 @@ Plug 'szw/vim-maximizer'
 " Smarter syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
+" AI productivity tools
+Plug 'olimorris/codecompanion.nvim'
+
 " Official Copilot plugin
 " Plug 'github/copilot.vim'
-
-" C# LSP
-" Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 
@@ -150,6 +143,10 @@ nmap <silent> <C-b> :NvimTreeToggle<CR>
 " let g:copilot_no_tab_map = v:true
 
 " ------------------------------ codecompanion.nvim
+
+lua <<EOF
+	require("codecompanion").setup()
+EOF
 
 " lua <<EOF
 " require("codecompanion").setup({
