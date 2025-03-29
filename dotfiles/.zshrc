@@ -119,7 +119,7 @@ export PNPM_HOME="/home/matt/n/lib/node_modules/pnpm/bin"
 export PATH="$PNPM_HOME:$PATH"
 
 # Node version manager installation path
-# export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Local bin path
 export PATH="$HOME/.local/bin:$PATH"
@@ -176,5 +176,3 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Disable cowsay in Ansible
 export ANSIBLE_NOCOWS=1
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

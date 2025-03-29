@@ -63,11 +63,11 @@ Plug 'szw/vim-maximizer'
 " Smarter syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
+" Official Copilot plugin
+Plug 'github/copilot.vim'
+
 " AI productivity tools
 Plug 'olimorris/codecompanion.nvim'
-
-" Official Copilot plugin
-" Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -139,30 +139,23 @@ nmap <silent> <C-b> :NvimTreeToggle<CR>
 " ------------------------------ copilot.vim
 " 
 " " Remap accept Copilot suggestion to <C-\>
-" imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <C-\> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " ------------------------------ codecompanion.nvim
 
 lua <<EOF
-	require("codecompanion").setup()
+require("codecompanion").setup({
+	strategies = {
+		chat = {
+			adapter = "copilot"
+		},
+		inline = {
+			adapter = "copilot"
+		},
+	},
+})
 EOF
-
-" lua <<EOF
-" require("codecompanion").setup({
-	" strategies = {
-		" chat = {
-			" adapter = "copilot",
-		" },
-		" inline = {
-			" adapter = "copilot",
-		" },
-	" },
-	" opts = {
-		" log_level = "TRACE",
-	" },
-" })
-" EOF
 
 " ------------------------------ nerdcommenter
 
