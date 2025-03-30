@@ -176,3 +176,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Disable cowsay in Ansible
 export ANSIBLE_NOCOWS=1
+
+# Locale settings for Perl
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8

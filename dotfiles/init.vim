@@ -653,6 +653,12 @@ command Vrc e ~/.config/nvim/init.vim
 " Reload NeoVim configuration
 command Svrc so ~/.config/nvim/init.vim
 
+" Edit Zsh aliases
+command Za e ~/.oh-my-zsh/custom/aliases.zsh
+
+" Edit Zsh configuration
+command Zrc e ~/.zshrc
+
 " Echo the full path of the current file
 command Path echo @%
 command Pa echo @%
