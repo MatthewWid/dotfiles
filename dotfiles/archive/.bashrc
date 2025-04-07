@@ -95,10 +95,6 @@ if grep -q -i microsoft /proc/version; then
 	export DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
 fi
 
-# pnpm
-export PNPM_HOME="/home/matt/n/lib/node_modules/pnpm/bin"
-export PATH="$PNPM_HOME:$PATH"
-
 # Change the current working directory to the last visited one after ranger quits.
 ranger_cd() {
 	temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"

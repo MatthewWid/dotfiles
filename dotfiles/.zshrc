@@ -114,13 +114,6 @@ export GPG_TTY="$(tty)"
 # Docker host socket
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
-# pnpm executable path
-export PNPM_HOME="/home/matt/n/lib/node_modules/pnpm/bin"
-export PATH="$PNPM_HOME:$PATH"
-
-# Node version manager installation path
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-
 # Local bin path
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -180,3 +173,8 @@ export ANSIBLE_NOCOWS=1
 # Locale settings for Perl
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# nvm directory, scripts and autocompletion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
