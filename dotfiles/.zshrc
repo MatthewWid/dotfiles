@@ -174,7 +174,10 @@ export ANSIBLE_NOCOWS=1
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-# nvm directory, scripts and autocompletion
+# tj/n is doing its best malware impression and refuses to remove its own env vars after uninstall
+unset N_PREFIX
+
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

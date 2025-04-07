@@ -55,7 +55,6 @@ run() {
 	setup $1 .inputrc & \
 	setup $1 .gdbinit & \
 	setup $1 init.vim ~/.config/nvim/init.vim & \
-	setup $1 .bashrc & \
 	setup $1 .zshrc & \
 	setup $1 commands.py ~/.config/ranger/commands.py & \
 	setup $1 commands_full.py ~/.config/ranger/commands_full.py & \
