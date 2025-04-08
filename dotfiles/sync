@@ -29,7 +29,7 @@ setup() {
 	elif [[ $TYPE == "link" ]]; then
 		# Link all files from current directory to destination
 		echo "Syncing \"$(basename $SRC)\" to \"$DST\"."
-		sudo ln -sf "$(realpath -m $SRC)" "$(realpath $DST)"
+		ln -sf "$(realpath -m $SRC)" "$(realpath $DST)"
 	elif [[ $TYPE == "clear" ]]; then
 		echo "Clearing \"$(basename $SRC)\" from \"$DST\"."
 		# Clear existing files
@@ -49,19 +49,19 @@ run() {
 	setup $1 .tmux.conf & \
 	setup $1 .gitignore-global & \
 	setup $1 .gitconfig & \
-	setup $1 bin/devenv ~/bin/devenv & \
 	setup $1 coc-settings.json ~/.config/nvim/coc-settings.json & \
 	setup $1 .fdignore & \
 	setup $1 .inputrc & \
 	setup $1 .gdbinit & \
 	setup $1 init.vim ~/.config/nvim/init.vim & \
 	setup $1 .zshrc & \
-	setup $1 commands.py ~/.config/ranger/commands.py & \
-	setup $1 commands_full.py ~/.config/ranger/commands_full.py & \
-	setup $1 rc.conf ~/.config/ranger/rc.conf & \
-	setup $1 rifle.conf ~/.config/ranger/rifle.conf & \
-	setup $1 scope.sh ~/.config/ranger/scope.sh & \
 	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh & \
+	setup $1 bin/devenv ~/bin/devenv & \
+	setup $1 ranger/commands.py ~/.config/ranger/commands.py & \
+	setup $1 ranger/commands_full.py ~/.config/ranger/commands_full.py & \
+	setup $1 ranger/rc.conf ~/.config/ranger/rc.conf & \
+	setup $1 ranger/rifle.conf ~/.config/ranger/rifle.conf & \
+	setup $1 ranger/scope.sh ~/.config/ranger/scope.sh & \
 	wait
 }
 
