@@ -89,31 +89,40 @@ sudo -v
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Install zsh common theme
-wget -O $ZSH_CUSTOM/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme
+zsh -i -c "wget -O \$ZSH_CUSTOM/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme"
 
 # Install Oh My Zsh plugins
-git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+zsh -i -c "git clone https://github.com/jeffreytse/zsh-vi-mode \$ZSH_CUSTOM/plugins/zsh-vi-mode"
+
+sudo -v
 
 # Node, package managers and global packages
 echo "== Installing Node and other package managers =="
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-bash -c "\
-	nvm install --lts; \
-	npm install -g \
-		pnpm \
-		yarn \
-		tsx \
-		open-cli \
-		markserv \
-		lorem-ipsum \
-		@angular/cli \
-		graphql-language-service-cli \
-		typescript-language-server"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm install --lts
+npm install -g \
+	npm@latest \
+	pnpm \
+	yarn \
+	tsx \
+	open-cli \
+	markserv \
+	lorem-ipsum \
+	@angular/cli \
+	graphql-language-service-cli \
+	typescript-language-server
+
+sudo -v
 
 # Dotfiles, configuration files and scripts
 echo "== Fetching dotfiles and scripts =="
-curl -sL mwidd.com/dotfiles/sync | bash -s -- fetch
+curl -sL https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles/sync | bash -s -- fetch
 touch ~/.hushlogin
+
+sudo -v
 
 # Vim plugin manager for NeoVim
 echo "== Installing NeoVim plugin manager =="
@@ -125,16 +134,22 @@ echo "== Installing NeoVim plugins =="
 DISPLAY= python3 -v -m pip install --user --upgrade pynvim
 nvim +'PlugInstall --sync' +qa
 
+sudo -v
+
 # Install Golang
 echo "== Installing Golang =="
 wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
 rm go1.24.2.linux-amd64.tar.gz
 
+sudo -v
+
 # Install Rust
 echo "== Installing Rust =="
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
+
+sudo -v
 
 # Install tmux plugin manager
 echo "== Installing tmux plugin manager =="
@@ -147,13 +162,8 @@ gem install tmuxinator
 
 # Install fzf
 echo "== Installing fzf =="
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
 ~/.fzf/install --all
-
-# Install Docker with rootless daemon
-echo "== Installing Docker with rootless daemon =="
-curl -fsSL https://get.docker.com | sh
-dockerd-rootless-setuptool.sh install
 
 # Install ChatGPT CLI
 echo "== Installing ChatGPT CLI =="
@@ -177,6 +187,7 @@ sudo ln -s $(which batcat) /usr/bin/bat
 echo "== Installing ripgrep without conflicts =="
 sudo apt-get download ripgrep
 sudo dpkg --force-overwrite -i ripgrep*.deb
+rm ripgrep*.deb
 
 # Symlink the latest g++ executable
 echo "== Symlinking g++ to latest version =="
@@ -186,11 +197,16 @@ sudo ln -sf $(which g++-14) $(which g++)
 sudo fc-cache -f
 
 # Docker completions
-mkdir -p ~/.oh-my-zsh/completions
-docker completion zsh > ~/.oh-my-zsh/completions/_docker
+if command -v docker &> /dev/null; then
+	mkdir -p ~/.oh-my-zsh/completions
+	docker completion zsh > ~/.oh-my-zsh/completions/_docker
+fi
 
 # Generate local SSH keys
 echo "== Generating SSH keys =="
 ssh-keygen -q -N "" -t ed25519 -a 100 -f ~/.ssh/id_ed25519 <<< "n" > /dev/null
+
+# Set zsh as default shell
+chsh -s $(which zsh)
 
 echo "== Done! =="

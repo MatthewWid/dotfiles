@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Fetch a file, backup and delete existing copies and create directories.
 setup() {
@@ -29,7 +29,7 @@ setup() {
 	elif [[ $TYPE == "link" ]]; then
 		# Link all files from current directory to destination
 		echo "Syncing \"$(basename $SRC)\" to \"$DST\"."
-		ln -sf "$(realpath -m $SRC)" "$(realpath $DST)"
+		sudo ln -sf "$(realpath -m $SRC)" "$(realpath $DST)"
 	elif [[ $TYPE == "clear" ]]; then
 		echo "Clearing \"$(basename $SRC)\" from \"$DST\"."
 		# Clear existing files
@@ -62,7 +62,6 @@ run() {
 	setup $1 rifle.conf ~/.config/ranger/rifle.conf & \
 	setup $1 scope.sh ~/.config/ranger/scope.sh & \
 	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh & \
-	setup $1 common.zsh-theme $ZSH_CUSTOM/themes/common.zsh-theme
 	wait
 }
 
