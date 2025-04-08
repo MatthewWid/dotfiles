@@ -24,6 +24,7 @@ sudo add-apt-repository -y ppa:neovim-ppa/unstable
 sudo add-apt-repository -y multiverse
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo add-apt-repository -y ppa:wslutilities/wslu
+sudo add-apt-repository -y ppa:dotnet/backports
 sudo apt update
 sudo apt -y upgrade
 sudo apt autoremove
@@ -81,7 +82,8 @@ sudo apt -y install \
 	keynav \
 	httrack \
 	tshark \
-	trash-cli
+	trash-cli \
+	dotnet-sdk-9.0
 
 sudo -v
 
@@ -117,30 +119,23 @@ npm install -g \
 
 sudo -v
 
-# Dotfiles, configuration files and scripts
-echo "== Fetching dotfiles and scripts =="
-curl -sL https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles/sync | bash -s -- fetch
-touch ~/.hushlogin
-
-sudo -v
+# Install Golang
+echo "== Installing Golang =="
+wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
+rm go1.24.2.linux-amd64.tar.gz
 
 # Vim plugin manager for NeoVim
 echo "== Installing NeoVim plugin manager =="
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
 	--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+sudo -v
+
 # NeoVim plugin install without opening interactively
 echo "== Installing NeoVim plugins =="
 DISPLAY= python3 -v -m pip install --user --upgrade pynvim
 nvim +'PlugInstall --sync' +qa
-
-sudo -v
-
-# Install Golang
-echo "== Installing Golang =="
-wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
-rm go1.24.2.linux-amd64.tar.gz
 
 sudo -v
 
@@ -156,9 +151,6 @@ echo "== Installing tmux plugin manager =="
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
-
-# Install tmuxinator
-gem install tmuxinator
 
 # Install fzf
 echo "== Installing fzf =="
@@ -205,6 +197,13 @@ fi
 # Generate local SSH keys
 echo "== Generating SSH keys =="
 ssh-keygen -q -N "" -t ed25519 -a 100 -f ~/.ssh/id_ed25519 <<< "n" > /dev/null
+
+sudo -v
+
+# Dotfiles, configuration files and scripts
+echo "== Fetching dotfiles and scripts =="
+curl -sL https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles/sync | bash -s -- fetch
+touch ~/.hushlogin
 
 # Set zsh as default shell
 chsh -s $(which zsh)
