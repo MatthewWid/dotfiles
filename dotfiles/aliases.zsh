@@ -32,7 +32,7 @@ alias cp="cp -r"
 
 # Command shortcuts
 alias nv="$(which n)"
-# alias n="node"
+alias n="node"
 alias v="$EDITOR"
 alias v.="v ."
 t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
