@@ -189,6 +189,10 @@ sudo ln -sf $(which g++-14) $(which g++)
 # Update font cache to use Microsoft fonts
 sudo fc-cache -f
 
+# Generate and configure localisation files for Perl scripts to use
+sudo locale-gen en_US en_US.UTF-8
+sudo dpkg-reconfigure --frontend noninteractive locales
+
 # Docker completions
 if command -v docker &> /dev/null; then
 	mkdir -p ~/.oh-my-zsh/completions

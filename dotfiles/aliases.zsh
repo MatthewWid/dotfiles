@@ -254,7 +254,7 @@ alias tmka="tmux kill-server"
 alias tmkab="tmux kill-session -a -t $1"
 alias mux="tmuxinator"
 
-# docker
+# Docker
 alias doc="docker-compose"
 alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"

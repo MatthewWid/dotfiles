@@ -171,8 +171,8 @@ complete -o nospace -C /usr/bin/terraform terraform
 export ANSIBLE_NOCOWS=1
 
 # Locale settings for Perl
-LC_CTYPE=en_US.UTF-8
-LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # tj/n is doing its best malware impression and refuses to remove its own env vars after uninstall
 unset N_PREFIX

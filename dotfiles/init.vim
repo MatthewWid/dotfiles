@@ -157,6 +157,12 @@ require("codecompanion").setup({
 })
 EOF
 
+" Shortcuts to CodeCompanion commands
+command CC CodeCompanion
+command Cc CodeCompanion
+command CCc CodeCompanionChat
+command Ccc CodeCompanionChat
+
 " ------------------------------ nerdcommenter
 
 " \cc to comment out a highlighted section of code
