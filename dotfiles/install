@@ -84,7 +84,8 @@ sudo apt -y install \
 	httrack \
 	tshark \
 	trash-cli \
-	dotnet-sdk-9.0
+	dotnet-sdk-9.0 \
+	htop
 
 sudo -v
 
