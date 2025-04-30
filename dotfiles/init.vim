@@ -264,6 +264,7 @@ let g:coc_global_extensions = [
 	\ 'coc-angular',
 	\ 'coc-biome',
 	\ '@yaegassy/coc-ansible',
+	\ '@yaegassy/coc-tailwindcss3',
 	\ ]
 
 let g:coc_filetype_map = {
@@ -669,6 +670,9 @@ command Zrc e ~/.zshrc
 command Path echo @%
 command Pa echo @%
 command PA echo @%
+
+" Toggle line breaking
+command Nr set wrap!
 
 " ------------------------------------------------------------ Re-map file types
 

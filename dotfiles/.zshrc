@@ -50,7 +50,7 @@ bindkey -v
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins+=(git)
 plugins+=(fzf)
-plugins+=(docker)
+if type docker &> /dev/null; then plugins+=(docker); fi
 #plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
