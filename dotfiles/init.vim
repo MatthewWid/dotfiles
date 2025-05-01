@@ -359,7 +359,7 @@ let g:winresizer_start_key='<C-w>r'
 let g:winresizer_vert_resize='5'
 
 
-" ------------------------------ markdown-preview
+" ------------------------------ markdown-preview.nvim
 
 " Default to light mode
 let g:mkdp_theme = 'light'
