@@ -412,7 +412,7 @@ let g:fzf_action = {
   \ }
 
 " Position fzf window in the center of the screen
-"let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'yoffset': 0.4 } }
+" let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'yoffset': 0.4 } }
 
 " ------------------------------ lightline.vim
 

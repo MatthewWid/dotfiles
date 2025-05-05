@@ -210,7 +210,7 @@ alias pnx="pnpm dlx"
 pnpg() { pnpm pkg get $* | jq; }
 pnps() { pnpm pkg set "$1=$2"; }
 alias pnpd="pnpm pkg delete"
-alias pnc="pnpm create"
+alias pncre="pnpm create"
 alias pnpk="pnpm pkg"
 alias pnab="pnpm approve-builds"
 
