@@ -31,7 +31,7 @@
 	"tsserver.npm": "/usr/bin/npm",
 	"eslint.nodePath": "/usr/local/bin/node",
 	"prettier.arrowParens": "always",
-	"prettier.bracketSpacing": true,
+	"prettier.bracketSpacing": false,
 	"prettier.endOfLine": "lf",
 	"prettier.htmlWhitespaceSensitivity": "css",
 	"prettier.jsxSingleQuote": false,
