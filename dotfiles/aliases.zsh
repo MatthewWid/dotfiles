@@ -87,8 +87,10 @@ delzone() { find . -name '*:Zone.Identifier' -delete; }
 uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
 
 # Dotfiles
-getnodeignore() { wget --quiet -O .gitignore https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/Node.gitignore; }
-gettsconfig() { wget --quiet -O tsconfig.json https://github.com/MatthewWid/dotfiles/raw/refs/heads/master/dotfiles/tsconfig.json }
+DOTFILES_BASE_URL="https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles"
+getdotfile() { wget -O "${2:-$1}" "$DOTFILES_BASE_URL/$1"; }
+getnodeignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Node.gitignore"; }
+gettsconfig() { wget --quiet -O tsconfig.json "$DOTFILES_BASE_URL/tsconfig.json" }
 
 # Git
 alias gint="git init"
