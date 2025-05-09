@@ -4,8 +4,8 @@
 	"include": ["./src/**/*"],
 	"exclude": ["./src/**/*.test.ts", "./src/**/*.spec.ts"],
 	"compilerOptions": {
-		"lib": ["ES2022"],
-		"target": "ES2021",
+		"lib": ["ES2023"],
+		"target": "ES2022",
 		"sourceMap": true,
 		"declaration": true,
 		"module": "nodenext",
@@ -14,7 +14,9 @@
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,
+		"erasableSyntaxOnly": true,
 		"experimentalDecorators": true,
+		"noFallthroughCasesInSwitch": true,
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true
 	}
