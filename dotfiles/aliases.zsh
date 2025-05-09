@@ -22,7 +22,7 @@ alias l="ls"
 cd() { builtin cd "$@" && ls; }
 alias ..="cd \"..\""
 alias cd..=".."
-alias tre="tree -I \"node_modules|build*\""
+alias tre="tree -a -I \"node_modules|build*\""
 alias diff="git diff --no-index --"
 alias sh="bash"
 alias grep="grep --color=auto"
