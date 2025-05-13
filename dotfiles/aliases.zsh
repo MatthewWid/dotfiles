@@ -31,7 +31,7 @@ alias egrep="grep -E"
 alias cp="cp -r"
 
 # Command shortcuts
-alias nv="$(which n)"
+alias nv="nvm"
 alias n="node"
 alias v="$EDITOR"
 alias v.="v ."
