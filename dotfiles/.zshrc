@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/mattw/.zsh/completions:"* ]]; then export FPATH="/home/mattw/.zsh/completions:$FPATH"; fi
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # Path to oh-my-zsh installation.

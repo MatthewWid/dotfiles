@@ -367,12 +367,6 @@ let g:mkdp_theme = 'light'
 " Don't close preview when closing buffer
 let g:mkdp_auto_close=0
 
-" Set server to listen on all addresses to make WSL <-> Windows connection work
-let g:mkdp_open_to_the_world=1
-
-" Fix browser open in WSL
-" let g:mkdp_browser="wsl-open"
-
 " ------------------------------ nvim-spectre
 
 " Search all files
