@@ -162,6 +162,7 @@ command CC CodeCompanion
 command Cc CodeCompanion
 command CCc CodeCompanionChat
 command Ccc CodeCompanionChat
+command Ch CodeCompanionChat
 
 " ------------------------------ nerdcommenter
 
