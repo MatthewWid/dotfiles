@@ -3,7 +3,7 @@
 	email = matthew.widdi@gmail.com
 [core]
 	autocrlf = true
-	excludesFile = /home/matt/.gitignore-global
+	excludesFile = ~/.gitignore-global
 	eol = lf
 [rebase]
 	autoStash = true

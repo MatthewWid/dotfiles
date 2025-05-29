@@ -1,5 +1,3 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/mattw/.zsh/completions:"* ]]; then export FPATH="/home/mattw/.zsh/completions:$FPATH"; fi
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # Path to oh-my-zsh installation.
@@ -159,7 +157,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 # add .NET Core tools to PATH
-export PATH="$PATH:/home/matt/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 # Angular CLI autocompletion
 if command -v ng &> /dev/null; then
@@ -183,3 +181,10 @@ unset N_PREFIX
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Deno completions
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+
+# Fix CodeCompanion.nvim being unable to write LLM output to default directory
+# See https://github.com/yetone/avante.nvim/issues/315
+export XDG_RUNTIME_DIR="/tmp/"

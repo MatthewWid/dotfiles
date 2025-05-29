@@ -8,8 +8,8 @@
 			"settings": {}
 		},
 		"csharp-ls": {
-			"command": "csharp-ls",
-			"filetypes": "cs",
+			"command": "~/.dotnet/tools/csharp-ls",
+			"filetypes": ["cs"],
 			"rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
 		}
 	},
@@ -58,6 +58,10 @@
 				"tsconfig.build.json"
 			],
 			"url": "https://json.schemastore.org/tsconfig"
+		},
+		{
+			"fileMatch": ["jsr.json"],
+			"url": "https://jsr.io/schema/config-file.v1.json"
 		}
 	],
 	"snippets.ultisnips.pythonPrompt": false

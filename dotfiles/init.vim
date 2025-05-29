@@ -263,6 +263,7 @@ let g:coc_global_extensions = [
 	\ 'coc-pairs',
 	\ 'coc-angular',
 	\ 'coc-biome',
+	\ 'coc-deno',
 	\ '@yaegassy/coc-ansible',
 	\ '@yaegassy/coc-tailwindcss3',
 	\ ]
