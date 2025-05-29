@@ -117,7 +117,15 @@ npm install -g \
 	lorem-ipsum \
 	@angular/cli \
 	graphql-language-service-cli \
-	typescript-language-server
+	typescript-language-server \
+	http-server
+
+sudo -v
+
+# Dotnet and global packages
+echo "== Installing .NET and global packages =="
+dotnet tool install --global \
+	csharp-ls
 
 sudo -v
 
