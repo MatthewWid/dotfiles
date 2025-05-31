@@ -115,6 +115,10 @@ handle_extension() {
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+
+				## Scripts
+				js|jsx|ts|tsx|md|mdx|lua)
+						bat -f "${FILE_PATH}" && exit 5
     esac
 }
 
