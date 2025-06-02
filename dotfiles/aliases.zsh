@@ -55,7 +55,6 @@ alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
 alias red="redis-cli"
-alias dn="dotnet"
 
 # New commands
 alias cls="printf \"\033c\""
@@ -291,3 +290,7 @@ alias wpy="psc py"
 alias wpip="psc py -m pip"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
+
+# .NET
+alias dn="dotnet"
+alias dnw="dotnet watch"
