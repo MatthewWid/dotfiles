@@ -125,8 +125,8 @@ sudo -v
 
 # Dotnet and global packages
 echo "== Installing .NET and global packages =="
-dotnet tool install --global \
-	csharp-ls
+dotnet tool install --global csharp-ls
+dotnet tool install --global csharprepl
 
 sudo -v
 

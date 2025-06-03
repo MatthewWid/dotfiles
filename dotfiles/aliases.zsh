@@ -50,7 +50,6 @@ alias findalias="alias"
 alias open="npm_config_yes=true npx open-cli"
 alias chm="chmod"
 alias cho="chown"
-alias tsxw="clear && tsx watch"
 alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
@@ -62,7 +61,6 @@ alias size="du -bsh"
 alias bytes="wc -c"
 alias proc="ps aux | grep"
 alias e.="explorer.exe ."
-alias tsf="tmux source-file ~/.tmux.conf"
 alias genfile="xfs_mkfile $1 $2"
 alias qr="qrencode -t ANSI256 -r /dev/stdin -o /dev/stdout"
 alias xargsp="xargs -n 1 -I {}"
@@ -254,6 +252,7 @@ alias tmkl="tmk"
 tmkn() { tmux kill-session -t $1; }
 alias tmka="tmux kill-server"
 alias tmkab="tmux kill-session -a -t $1"
+alias tsf="tmux source-file ~/.tmux.conf"
 alias mux="tmuxinator"
 
 # Docker
@@ -291,6 +290,7 @@ alias wpip="psc py -m pip"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
 
-# .NET
+# C#
+alias csre="csharprepl"
 alias dn="dotnet"
 alias dnw="dotnet watch"

@@ -154,6 +154,13 @@ require("codecompanion").setup({
 			adapter = "copilot"
 		},
 	},
+	display = {
+		chat = {
+			window = {
+				position = "right",
+			},
+		},
+	},
 })
 EOF
 
