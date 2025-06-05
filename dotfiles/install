@@ -61,6 +61,7 @@ sudo apt -y install \
 	python3 \
 	python3-pip \
 	python3-venv \
+	pipx \
 	wslu \
 	ranger \
 	ffmpeg \
@@ -122,6 +123,10 @@ npm install -g \
 	http-server
 
 sudo -v
+
+# Python and global packages
+echo "== Installing Python and global packages =="
+pipx install autopep8
 
 # Dotnet and global packages
 echo "== Installing .NET and global packages =="
