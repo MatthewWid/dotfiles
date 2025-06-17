@@ -62,6 +62,7 @@ run() {
 	setup $1 ranger/rc.conf ~/.config/ranger/rc.conf & \
 	setup $1 ranger/rifle.conf ~/.config/ranger/rifle.conf & \
 	setup $1 ranger/scope.sh ~/.config/ranger/scope.sh & \
+	setup $1 bat/config ~/.config/bat/config & \
 	wait
 }
 
