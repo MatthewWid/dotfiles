@@ -63,6 +63,9 @@ Plug 'szw/vim-maximizer'
 " Smarter syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
+" Formatting
+Plug 'stevearc/conform.nvim'
+
 " Official Copilot plugin
 Plug 'github/copilot.vim'
 
@@ -462,6 +465,27 @@ let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple
 
 " Ctrl+W + Z toggle-maximizes active split window
 nmap <silent> <C-w>z :MaximizerToggle<CR>
+
+" ------------------------------ conform.nvim
+
+lua <<EOF
+require("conform").setup({
+	formatters_by_ft = {
+		cs = { "csharpier" },
+	},
+	format_on_save = {
+		lsp_format = "fallback",
+		timeout_ms = 500,
+	},
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+EOF
 
 " ------------------------------------------------------------ General Settings
 

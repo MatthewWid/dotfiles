@@ -29,6 +29,7 @@ alias grep="grep --color=auto"
 alias fgrep="grep -F"
 alias egrep="grep -E"
 alias cp="cp -r"
+alias htmlq="htmlq --pretty"
 
 # Command shortcuts
 alias nv="nvm"
@@ -293,4 +294,6 @@ vact() { source ${1:-venv}/bin/activate; }
 # C#
 alias csre="csharprepl"
 alias dn="dotnet"
+alias dnr="dotnet run"
 alias dnw="dotnet watch"
+alias dnf="dotnet format"

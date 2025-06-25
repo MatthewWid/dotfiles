@@ -132,6 +132,7 @@ pipx install autopep8
 echo "== Installing .NET and global packages =="
 dotnet tool install --global csharp-ls
 dotnet tool install --global csharprepl
+dotnet tool install --global csharpier
 
 sudo -v
 
