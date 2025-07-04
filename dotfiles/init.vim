@@ -614,7 +614,7 @@ nmap <silent> yw ye
 " Double-escape to hide search highlights
 nmap <silent> <esc><esc> :let @/ = ""<CR>
 
-" Do no unselect after indenting or de-indenting
+" Do not unselect after indenting or de-indenting
 vmap > >gv
 vmap < <gv
 
