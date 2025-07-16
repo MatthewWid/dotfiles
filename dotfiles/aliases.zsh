@@ -214,6 +214,7 @@ alias pnpd="pnpm pkg delete"
 alias pncre="pnpm create"
 alias pnpk="pnpm pkg"
 alias pnab="pnpm approve-builds"
+alias pnv="pnpm --version"
 
 # Yarn
 alias yint="yarn init -y"

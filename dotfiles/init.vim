@@ -701,6 +701,9 @@ command PA echo @%
 " Toggle line breaking
 command Nr set wrap!
 
+" Check for file changes
+command Ct checktime
+
 " ------------------------------------------------------------ Re-map file types
 
 autocmd BufNewFile,BufRead *.json set filetype=jsonc
