@@ -261,6 +261,7 @@ alias mux="tmuxinator"
 alias doc="docker-compose"
 alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"
+alias docl="docker-compose logs -f"
 alias docd="docker-compose down"
 
 # tar
@@ -287,10 +288,10 @@ alias psc="powershell.exe -Command \"$*\""
 alias python="python3"
 alias py="python"
 alias pip="pip3"
-alias wpy="psc py"
-alias wpip="psc py -m pip"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
+alias wpy="psc py"
+alias wpip="psc py -m pip"
 
 # C#
 alias csre="csharprepl"
