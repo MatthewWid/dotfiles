@@ -94,8 +94,9 @@ ranger_cd() {
 # fzf installation directory
 export FZF_BASE="$HOME/.fzf"
 
-# fzf uses ripgrep instead
-export FZF_DEFAULT_COMMAND="rg --hidden --follow --files --glob \"!{.git,node_modules}\""
+# fzf use ripgrep instead
+FZF_IGNORE_DIRS=".git,node_modules,env,venv,__pycache__"
+export FZF_DEFAULT_COMMAND="rg --hidden --follow --files --glob \"!{$FZF_IGNORE_DIRS}\""
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 # fzf format search top-to-bottom to not move cursor position
