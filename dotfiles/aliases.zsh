@@ -263,6 +263,7 @@ alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"
 alias docl="docker-compose logs -f"
 alias docd="docker-compose down"
+alias docb="docker-compose build"
 
 # tar
 alias tarx="tar -xzvf"
@@ -290,6 +291,7 @@ alias py="python"
 alias pip="python3 -m pip"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
+alias pym="python manage.py"
 alias wpy="psc py"
 alias wpip="psc py -m pip"
 
