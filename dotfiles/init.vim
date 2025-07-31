@@ -600,6 +600,9 @@ EOF
 set autoread
 au CursorHold * checktime
 
+" Disable modelines (code comments that set vim variables per file)
+set nomodeline
+
 " ------------------------------------------------------------ Keybindings 
 
 " Set leader key to backslash
