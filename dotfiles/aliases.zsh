@@ -261,7 +261,7 @@ alias mux="tmuxinator"
 alias docl="docker container ls"
 alias docla="docker container ls -a"
 alias docs="docker container start"
-alias docr="docker container rm"
+alias docrm="docker container rm"
 alias docd="docker container stop"
 alias doil="docker image ls"
 
@@ -271,6 +271,7 @@ alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"
 alias docl="docker-compose logs -f"
 alias docd="docker-compose down"
+alias docrm="docker-compose rm -f"
 alias docb="docker-compose build"
 
 # tar
@@ -299,6 +300,9 @@ alias py="python"
 alias pip="python3 -m pip"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
+vacd() { deactivate; }
+alias pii="pip install"
+alias piu="pip uninstall"
 alias pym="python manage.py"
 alias wpy="psc py"
 alias wpip="psc py -m pip"

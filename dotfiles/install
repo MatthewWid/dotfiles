@@ -87,7 +87,8 @@ sudo apt -y install \
 	trash-cli \
 	dotnet-sdk-9.0 \
 	htop \
-	dnsutils
+	dnsutils \
+	redis-tools
 
 sudo -v
 
