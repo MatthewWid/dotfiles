@@ -258,6 +258,14 @@ alias tsf="tmux source-file ~/.tmux.conf"
 alias mux="tmuxinator"
 
 # Docker
+alias docl="docker container ls"
+alias docla="docker container ls -a"
+alias docs="docker container start"
+alias docr="docker container rm"
+alias docd="docker container stop"
+alias doil="docker image ls"
+
+# Docker Compose
 alias doc="docker-compose"
 alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"
