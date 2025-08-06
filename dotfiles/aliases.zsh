@@ -88,7 +88,9 @@ uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
 # Dotfiles
 DOTFILES_BASE_URL="https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles"
 getdotfile() { wget -O "${2:-$1}" "$DOTFILES_BASE_URL/$1"; }
+getignore() { wget --quiet -O .gitignore "https://github.com/github/gitignore/raw/refs/heads/main/$1.gitignore"; }
 getnodeignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Node.gitignore"; }
+getpyignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Python.gitignore"; }
 gettsconfig() { wget --quiet -O tsconfig.json "$DOTFILES_BASE_URL/tsconfig.json" }
 
 # Git
