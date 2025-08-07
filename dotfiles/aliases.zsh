@@ -300,6 +300,7 @@ alias psc="powershell.exe -Command \"$*\""
 alias python="python3"
 alias py="python"
 alias pip="python3 -m pip"
+alias dja="django-admin"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
 vacd() { deactivate; }
