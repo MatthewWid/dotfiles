@@ -275,6 +275,7 @@ let g:coc_global_extensions = [
 	\ 'coc-angular',
 	\ 'coc-biome',
 	\ 'coc-deno',
+	\ 'coc-xml',
 	\ '@yaegassy/coc-ansible',
 	\ '@yaegassy/coc-tailwindcss3',
 	\ ]

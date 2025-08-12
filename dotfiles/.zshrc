@@ -189,3 +189,6 @@ if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.z
 # Fix CodeCompanion.nvim being unable to write LLM output to default directory
 # See https://github.com/yetone/avante.nvim/issues/315
 export XDG_RUNTIME_DIR="/tmp/"
+
+# Load system-wide environment variables
+source /etc/environment
