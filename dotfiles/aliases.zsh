@@ -32,13 +32,9 @@ alias cp="cp -r"
 alias htmlq="htmlq --pretty"
 
 # Command shortcuts
-alias nv="nvm"
-alias n="node"
 alias v="$EDITOR"
 alias v.="v ."
-t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
 alias d="mkdir -p"
-dcd() { d $* && cd "${@:$#}"; }
 alias cd-="cd -"
 alias r="rm -rf"
 alias re="ranger_cd"
@@ -67,6 +63,8 @@ alias qr="qrencode -t ANSI256 -r /dev/stdin -o /dev/stdout"
 alias xargsp="xargs -n 1 -I {}"
 alias grepc="rg --with-filename --no-heading"
 alias serve="http-server"
+t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
+dcd() { d $* && cd "${@:$#}"; }
 htmlqp() { htmlq -p $@ | tail -n +2 | bat -l html -p; }
 port() { sudo ss -lptn 'sport = :$1'; }
 brow() { if [[ $1 =~ ^http:\/\/ ]]; then $BROWSER "$1"; else $BROWSER "http://$1"; fi; }
@@ -80,7 +78,7 @@ tomp3() { ffmpeg -i "$1" -q:a 0 "$(echo \"$1\" | cut -f 1 -d '.').mp3"; }
 ips() { ip -br a; }
 vjson() { v "$(cat /dev/urandom | LC_ALL=C tr -dc a-zA-Z0-9 | head -c 12; echo '').ignore.json"; }
 gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;; }
-encode() { printf %s "$1" | jq -s -R -r @uri; }
+urlencode() { printf %s "$1" | jq -s -R -r @uri; }
 awscheck() { aws sts get-caller-identity; }
 delzone() { find . -name '*:Zone.Identifier' -delete; }
 uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
@@ -143,8 +141,7 @@ alias gbm="git branch -m"
 gdefb() { git branch -r | grep "HEAD -> " | xargs | cut -d " " -f 3 | cut -d "/" -f 2; }
 alias gc="git checkout"
 alias gcb="git checkout -b"
-alias gcbm="git checkout -b $1 master"
-alias gi="git init"
+gcbm() { git checkout -b "$1" master; }
 alias gf="git fetch"
 alias gfp="git fetch -p"
 gfpd() { git fetch --prune | git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -d; }
@@ -164,7 +161,11 @@ alias grbi="git rebase --interactive"
 alias grbim="git rebase --interactive master"
 alias grl="git reflog --date=relative"
 
-# npm
+# Node
+alias nv="nvm"
+alias n="node"
+
+## npm
 alias nint="npm init -y"
 alias nins="npm install"
 alias na="npm install --save"
@@ -182,7 +183,7 @@ alias np="npm run prod"
 alias nt="npm run test"
 alias ndoc="npm run doc"
 
-# pnpm
+## pnpm
 alias pnint="pnpm init"
 alias pnins="pnpm install"
 alias pna="pnpm add"
@@ -218,7 +219,7 @@ alias pnpk="pnpm pkg"
 alias pnab="pnpm approve-builds"
 alias pnv="pnpm --version"
 
-# Yarn
+## Yarn
 alias yint="yarn init -y"
 alias yins="yarn install"
 alias ya="yarn add"
@@ -239,8 +240,8 @@ alias ydo="yarn run doc"
 # curl
 alias curl="curl -L"
 alias cu="curl -s"
-alias cug="curl --request GET $1"
-alias cup="curl --request POST $1 --data '$2'"
+cug() { curl --request GET "$1"; }
+cup() { curl --request POST "$1" --data "$2"; }
 
 # tmux
 alias tm="tmux"
@@ -260,14 +261,13 @@ alias tsf="tmux source-file ~/.tmux.conf"
 alias mux="tmuxinator"
 
 # Docker
-alias docl="docker container ls"
-alias docla="docker container ls -a"
-alias docs="docker container start"
-alias docrm="docker container rm"
-alias docd="docker container stop"
-alias doil="docker image ls"
+alias docol="docker container ls -a"
+alias docos="docker container start"
+alias docor="docker container rm"
+alias docod="docker container stop"
+alias doiml="docker image ls"
 
-# Docker Compose
+## Docker Compose
 alias doc="docker-compose"
 alias docu="docker-compose up -d"
 alias docul="docu && docker-compose logs -f"
@@ -291,7 +291,7 @@ wslip() { ip addr show eth0 | grep --colour=never -oP '(?<=inet\s)\d+(\.\d+){3}'
 wslhome() { builtin cd $(wslpath "$(wslvar USERPROFILE)"); }
 wsldown() { powershell.exe -Command "wsl --shutdown"; }
 
-# Powershell
+## Powershell
 alias pss="powershell.exe"
 alias psf="powershell.exe -ExecutionPolicy bypass -File $1"
 alias psc="powershell.exe -Command \"$*\""
@@ -299,17 +299,28 @@ alias psc="powershell.exe -Command \"$*\""
 # Python
 alias python="python3"
 alias py="python"
-alias pip="python3 -m pip"
-alias dja="django-admin"
 venv() { python3 -m venv ${1:-venv} ${@:2}; }
 vact() { source ${1:-venv}/bin/activate; }
-vacd() { deactivate; }
+vdact() { deactivate; }
+alias dja="django-admin"
+
+## Pip
+alias pip="python3 -m pip"
 alias pii="pip install"
 alias piu="pip uninstall"
 alias pif="pip freeze > requirements.txt"
 alias pym="python manage.py"
+alias pymrs="pym runserver"
 alias wpy="psc py"
 alias wpip="psc py -m pip"
+
+## Poetry
+alias povact="eval $(poetry env activate)"
+alias point="poetry init"
+alias poa="poetry add"
+alias pou="poetry remove"
+alias por="poetry run"
+alias poin="poetry install"
 
 # C#
 alias csre="csharprepl"

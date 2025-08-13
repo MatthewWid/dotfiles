@@ -48,10 +48,10 @@ bindkey -v
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins+=(git)
-plugins+=(fzf)
+if type git &> /dev/null; then plugins+=(git); fi
+if type fzf &> /dev/null; then plugins+=(fzf); fi
 if type docker &> /dev/null; then plugins+=(docker); fi
-#plugins+=(zsh-vi-mode)
+if type poetry &> /dev/null; then plugins+=(poetry); fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,6 +142,9 @@ setopt menu_complete
 
 # Do not prompt before using rm *
 setopt rmstarsilent
+
+# Require being inside a virtual environment to use pip
+export PIP_REQUIRE_VIRTUALENV=true
 
 # Autocompletion for pnpm
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true

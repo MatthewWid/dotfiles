@@ -127,7 +127,7 @@ sudo -v
 
 # Python and global packages
 echo "== Installing Python and global packages =="
-pipx install autopep8 pyinstaller
+pipx install autopep8 pyinstaller poetry
 
 # Dotnet and global packages
 echo "== Installing .NET and global packages =="
