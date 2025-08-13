@@ -306,6 +306,7 @@ vact() { source ${1:-venv}/bin/activate; }
 vacd() { deactivate; }
 alias pii="pip install"
 alias piu="pip uninstall"
+alias pif="pip freeze > requirements.txt"
 alias pym="python manage.py"
 alias wpy="psc py"
 alias wpip="psc py -m pip"
