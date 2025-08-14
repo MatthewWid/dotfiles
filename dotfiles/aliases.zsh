@@ -315,12 +315,12 @@ alias wpy="psc py"
 alias wpip="psc py -m pip"
 
 ## Poetry
-alias povact="eval $(poetry env activate)"
+alias poact="eval $(poetry env activate)"
 alias point="poetry init"
 alias poa="poetry add"
 alias pou="poetry remove"
 alias por="poetry run"
-alias poin="poetry install"
+alias poins="poetry install"
 
 # C#
 alias csre="csharprepl"
