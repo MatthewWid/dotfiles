@@ -341,6 +341,10 @@ nmap <silent> gi <Plug>(coc-implementation)
 " View references to symbol
 nmap <silent> gr <Plug>(coc-references)
 
+" Jump to next and previous problems
+nmap <silent> ]c :call CocAction('diagnosticNext')<CR>
+nmap <silent> [c :call CocAction('diagnosticPrevious')<CR>
+
 " Select down in coc-snippets
 vmap <C-j> <Plug>(coc-snippets-select)
 
@@ -359,9 +363,8 @@ command Ccs e ~/.config/nvim/coc-settings.json
 " Restart CoC LSPs
 command Ccr silent !CocRestart
 
-" Jump to next and previous problems
-nmap <silent> ]c :call CocAction('diagnosticNext')<CR>
-nmap <silent> [c :call CocAction('diagnosticPrevious')<CR>
+" Toggle inline type hints
+command Cth CocCommand document.toggleInlayHint
 
 " ------------------------------ winresizer
 
