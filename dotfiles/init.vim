@@ -111,6 +111,9 @@ local function on_attach(bufnr)
 
   -- h to close directory
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
+
+	-- C-e back to default (move view down by 1 line)
+	vim.keymap.del('n', '<C-e>', { buffer = bufnr })
 end
 
 require("nvim-tree").setup({
