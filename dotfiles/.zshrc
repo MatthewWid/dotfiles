@@ -95,7 +95,7 @@ ranger_cd() {
 export FZF_BASE="$HOME/.fzf"
 
 # fzf use ripgrep instead
-FZF_IGNORE_DIRS=".git,node_modules,env,venv,__pycache__"
+FZF_IGNORE_DIRS=".git,node_modules,env,venv,__pycache__,dist,build,browsers"
 export FZF_DEFAULT_COMMAND="rg --hidden --follow --files --glob \"!{$FZF_IGNORE_DIRS}\""
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 

@@ -160,6 +160,8 @@ alias grba="git rebase --abort"
 alias grbi="git rebase --interactive"
 alias grbim="git rebase --interactive master"
 alias grl="git reflog --date=relative"
+alias gcp="git cherry-pick"
+alias gup="cd \$(git rev-parse --show-toplevel)"
 
 # Node
 alias nv="nvm"
