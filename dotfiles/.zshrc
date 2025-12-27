@@ -156,9 +156,9 @@ export PIP_REQUIRE_VIRTUALENV=true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Auto-launch into tmux session
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+	# exec tmux
+# fi
 
 # add .NET Core tools to PATH
 export PATH="$PATH:$HOME/.dotnet/tools"
