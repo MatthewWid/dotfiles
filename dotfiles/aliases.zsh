@@ -112,7 +112,8 @@ alias gdc="git diff --cached"
 gdic() { git diff-tree --color=always -p ${1:-HEAD} ${2:-$(git rev-parse --show-toplevel)} | less -R; }
 # See status (files changed) of a commit (HEAD by default)
 gsic() { git diff-tree -r --no-commit-id --name-status ${1:-HEAD}; }
-alias gdicm="gdic master..HEAD"
+alias gmb="git symbolic-ref refs/remotes/origin/HEAD | sed 's,.*/,,'"
+alias gdicm="gdic $(gmb)..HEAD"
 alias gdcm="git diff-tree --no-commit-id --name-status -r"
 alias gcm="git commit -m"
 alias gcmnv="git commit --no-verify -m"

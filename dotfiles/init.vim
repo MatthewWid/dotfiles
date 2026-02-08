@@ -152,6 +152,13 @@ let g:copilot_no_tab_map = v:true
 
 lua <<EOF
 require("codecompanion").setup({
+	interactions = {
+		chat = {
+			opts = {
+				completion_provider = "coc",
+			},
+		},
+	},
 	strategies = {
 		chat = {
 			adapter = "copilot"
@@ -203,9 +210,10 @@ require'nvim-treesitter.configs'.setup {
 		"jsonc",
 		"jsonnet",
 		"javascript",
+		"typescript",
+		"tsx",
 		"jsdoc",
 		"lua",
-		"typescript",
 		"vim",
 		"terraform",
 		"regex",
@@ -478,24 +486,24 @@ nmap <silent> <C-w>z :MaximizerToggle<CR>
 
 " ------------------------------ conform.nvim
 
-lua <<EOF
-require("conform").setup({
-	formatters_by_ft = {
-		cs = { "csharpier" },
-	},
-	format_on_save = {
-		lsp_format = "fallback",
-		timeout_ms = 500,
-	},
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
-EOF
+" lua <<EOF
+" require("conform").setup({
+	" formatters_by_ft = {
+		" cs = { "csharpier" },
+	" },
+	" format_on_save = {
+		" lsp_format = "fallback",
+		" timeout_ms = 500,
+	" },
+" })
+"
+" vim.api.nvim_create_autocmd("BufWritePre", {
+	" pattern = "*",
+	" callback = function(args)
+		" require("conform").format({ bufnr = args.buf })
+	" end,
+" })
+" EOF
 
 " ------------------------------------------------------------ General Settings
 
