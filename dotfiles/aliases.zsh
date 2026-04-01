@@ -51,6 +51,7 @@ alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
 alias red="redis-cli"
+alias j="just"
 
 # New commands
 alias cls="printf \"\033c\""
