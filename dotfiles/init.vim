@@ -725,6 +725,9 @@ command Nr set wrap!
 " Check for file changes
 command Ct checktime
 
+" Quickly set fold level
+command! -nargs=1 Fl set foldlevel=<args>
+
 " ------------------------------------------------------------ Re-map file types
 
 autocmd BufNewFile,BufRead *.json set filetype=jsonc
