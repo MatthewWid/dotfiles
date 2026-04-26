@@ -64,37 +64,37 @@ alias qr="qrencode -t ANSI256 -r /dev/stdin -o /dev/stdout"
 alias xargsp="xargs -n 1 -I {}"
 alias grepc="rg --with-filename --no-heading"
 alias serve="http-server"
-t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
-dcd() { d $* && cd "${@:$#}"; }
-htmlqp() { htmlq -p $@ | tail -n +2 | bat -l html -p; }
-port() { sudo ss -lptn 'sport = :$1'; }
-brow() { if [[ $1 =~ ^http:\/\/ ]]; then $BROWSER "$1"; else $BROWSER "http://$1"; fi; }
-vid2u() { find ~/.config/nvim/plugged -exec dos2unix {} \;; }
-bman() { man bash | less -p "^       $1 "; }
-bundle() { curl -s https://bundlephobia.com/api/size?package=$1 | jq ".gzip" | numfmt --to iec; }
-ren() { mv $1 "$(dirname $(readlink -f $1))/$2"; }
-colours() { for i in {0..255}; do printf "\x1b[38;5;${i}mcolour${i}\n"; done }
-tomp4() { ffmpeg -i "$1" -codec copy -strict experimental "$(echo \"$1\" | cut -f 1 -d '.').mp4"; }
-tomp3() { ffmpeg -i "$1" -q:a 0 "$(echo \"$1\" | cut -f 1 -d '.').mp3"; }
-ips() { ip -br a; }
-vjson() { v "$(cat /dev/urandom | LC_ALL=C tr -dc a-zA-Z0-9 | head -c 12; echo '').ignore.json"; }
-gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;; }
-urlencode() { printf %s "$1" | jq -s -R -r @uri; }
-awscheck() { aws sts get-caller-identity; }
-delzone() { find . -name '*:Zone.Identifier' -delete; }
-uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
+function t() { mkdir -p "$(dirname "$1")" && touch "$1"; }
+function dcd() { d $* && cd "${@:$#}"; }
+function htmlqp() { htmlq -p $@ | tail -n +2 | bat -l html -p; }
+function port() { sudo ss -lptn 'sport = :$1'; }
+function brow() { if [[ $1 =~ ^http:\/\/ ]]; then $BROWSER "$1"; else $BROWSER "http://$1"; fi; }
+function vid2u() { find ~/.config/nvim/plugged -exec dos2unix {} \;; }
+function bman() { man bash | less -p "^       $1 "; }
+function bundle() { curl -s https://bundlephobia.com/api/size?package=$1 | jq ".gzip" | numfmt --to iec; }
+function ren() { mv $1 "$(dirname $(readlink -f $1))/$2"; }
+function colours() { for i in {0..255}; do printf "\x1b[38;5;${i}mcolour${i}\n"; done }
+function tomp4() { ffmpeg -i "$1" -codec copy -strict experimental "$(echo \"$1\" | cut -f 1 -d '.').mp4"; }
+function tomp3() { ffmpeg -i "$1" -q:a 0 "$(echo \"$1\" | cut -f 1 -d '.').mp3"; }
+function ips() { ip -br a; }
+function vjson() { v "$(cat /dev/urandom | LC_ALL=C tr -dc a-zA-Z0-9 | head -c 12; echo '').ignore.json"; }
+function gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;; }
+function urlencode() { printf %s "$1" | jq -s -R -r @uri; }
+function awscheck() { aws sts get-caller-identity; }
+function delzone() { find . -name '*:Zone.Identifier' -delete; }
+function uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
 
 # Dotfiles
 DOTFILES_BASE_URL="https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles"
-getdotfile() { wget -O "${2:-$1}" "$DOTFILES_BASE_URL/$1"; }
-getignore() { wget --quiet -O .gitignore "https://github.com/github/gitignore/raw/refs/heads/main/$1.gitignore"; }
-getnodeignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Node.gitignore"; }
-getpyignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Python.gitignore"; }
-gettsconfig() { wget --quiet -O tsconfig.json "$DOTFILES_BASE_URL/tsconfig.json" }
+function getdotfile() { wget -O "${2:-$1}" "$DOTFILES_BASE_URL/$1"; }
+function getignore() { wget --quiet -O .gitignore "https://github.com/github/gitignore/raw/refs/heads/main/$1.gitignore"; }
+function getnodeignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Node.gitignore"; }
+function getpyignore() { wget --quiet -O .gitignore "$DOTFILES_BASE_URL/Python.gitignore"; }
+function gettsconfig() { wget --quiet -O tsconfig.json "$DOTFILES_BASE_URL/tsconfig.json" }
 
 # Git
 alias gint="git init"
-gclo() { git clone "$@"; cd "$(basename "$1" .git)"; }
+function gclo() { git clone "$@"; cd "$(basename "$1" .git)"; }
 alias gl="git log --pretty=format:'%C(yellow)%h %Cblue%ad %Cgreen%d %Creset%s' --date=relative"
 alias gla="gl --all --graph"
 alias gll="git log"
@@ -109,12 +109,11 @@ alias ga.="git add -A"
 alias gap="git add --patch"
 alias gd="git diff"
 alias gdc="git diff --cached"
-# See diff of a commit (HEAD by default)
-gdic() { git diff-tree --color=always -p ${1:-HEAD} ${2:-$(git rev-parse --show-toplevel)} | less -R; }
+function gdic() { git diff-tree --color=always -p ${1:-HEAD} ${2:-$(git rev-parse --show-toplevel)} | less -R; }
 # See status (files changed) of a commit (HEAD by default)
-gsic() { git diff-tree -r --no-commit-id --name-status ${1:-HEAD}; }
-alias gmb="git symbolic-ref refs/remotes/origin/HEAD | sed 's,.*/,,'"
-alias gdicm="gdic $(gmb)..HEAD"
+function gsic() { git diff-tree -r --no-commit-id --name-status ${1:-HEAD}; }
+function gbma() { git symbolic-ref refs/remotes/origin/HEAD | sed 's,.*/,,'; }
+function gdicm() { gdic "$(gbma)..HEAD"; }
 alias gdcm="git diff-tree --no-commit-id --name-status -r"
 alias gcm="git commit -m"
 alias gcmnv="git commit --no-verify -m"
@@ -140,20 +139,20 @@ alias gba="git branch -a"
 alias gbl="git branch --list -vv -a"
 alias gbd="git branch -d"
 alias gbm="git branch -m"
-gdefb() { git branch -r | grep "HEAD -> " | xargs | cut -d " " -f 3 | cut -d "/" -f 2; }
+function gdefb() { git branch -r | grep "HEAD -> " | xargs | cut -d " " -f 3 | cut -d "/" -f 2; }
 alias gc="git checkout"
 alias gcb="git checkout -b"
-gcbm() { git checkout -b "$1" master; }
+function gcbm() { git checkout -b "$1" master; }
 alias gf="git fetch"
 alias gfp="git fetch -p"
-gfpd() { git fetch --prune | git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -d; }
+function gfpd() { git fetch --prune | git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -d; }
 alias gfm="git fetch origin master:master"
 alias gsm="git submodule"
 alias gsmu="git submodule update --init --recursive"
-alias gst="git stash --include-untracked"
-alias gstp="git stash pop"
-alias gstl="git stash list --format='%gd (%cr): %gs'"
-alias gstnr="git stash store $(git stash create)"
+function gst() { git stash push --include-untracked $@; }
+function gstp() { git stash pop $@; }
+function gstl() { git stash list --format='%gd (%cr): %gs'; }
+function gstnr() { git stash store $(git stash create); }
 alias gt="git tag"
 alias gtl="git tag --list -n99 --sort=-v:refname"
 alias gm="git merge"
@@ -216,8 +215,8 @@ alias pnl="pnpm run lint"
 alias pnf="pnpm run format"
 alias pne="pnpm exec"
 alias pnx="pnpm dlx"
-pnpg() { pnpm pkg get $* | jq; }
-pnps() { pnpm pkg set "$1=$2"; }
+function pnpg() { pnpm pkg get $* | jq; }
+function pnps() { pnpm pkg set "$1=$2"; }
 alias pnpd="pnpm pkg delete"
 alias pnc="pnpm create"
 alias pnpk="pnpm pkg"
@@ -245,13 +244,13 @@ alias ydo="yarn run doc"
 # curl
 alias curl="curl -L"
 alias cu="curl -s"
-cug() { curl --request GET "$1"; }
-cup() { curl --request POST "$1" --data "$2"; }
+function cug() { curl --request GET "$1"; }
+function cup() { curl --request POST "$1" --data "$2"; }
 
 # tmux
 alias tm="tmux"
 alias tmls="tmux ls"
-tmn() { tmux new-session -s $1 -d; tmux switch-client -t $1; }
+function tmn() { tmux new-session -s $1 -d; tmux switch-client -t $1; }
 alias tmal="tmux attach-session"
 alias tmal.="tmux attach-session -c $(pwd)"
 alias tman="tmux attach-session -t $1"
@@ -259,7 +258,7 @@ alias tmr="tmux rename-session $1"
 alias tmrn="tmux rename-session -t $1 $2"
 alias tmk="tmux kill-session"
 alias tmkl="tmk"
-tmkn() { tmux kill-session -t $1; }
+function tmkn() { tmux kill-session -t $1; }
 alias tmka="tmux kill-server"
 alias tmkab="tmux kill-session -a -t $1"
 alias tsf="tmux source-file ~/.tmux.conf"
@@ -283,7 +282,7 @@ alias docb="docker-compose build"
 
 # tar
 alias tarx="tar -xzvf"
-tarc() { tar -czvf "$1.tar.gz" $1 }
+function tarc() { tar -czvf "$1.tar.gz" $1 }
 
 # youtube-dl
 alias ytdl="yt-dlp"
@@ -291,10 +290,10 @@ alias ytdlb="ytdl -f bv+ba"
 alias ytdla="ytdl -x"
 
 # WSL
-wsldns() { cat /etc/resolv.conf | grep "nameserver" | cut -d " " -f 2; }
-wslip() { ip addr show eth0 | grep --colour=never -oP '(?<=inet\s)\d+(\.\d+){3}'; }
-wslhome() { builtin cd $(wslpath "$(wslvar USERPROFILE)"); }
-wsldown() { powershell.exe -Command "wsl --shutdown"; }
+function wsldns() { cat /etc/resolv.conf | grep "nameserver" | cut -d " " -f 2; }
+function wslip() { ip addr show eth0 | grep --colour=never -oP '(?<=inet\s)\d+(\.\d+){3}'; }
+function wslhome() { builtin cd $(wslpath "$(wslvar USERPROFILE)"); }
+function wsldown() { powershell.exe -Command "wsl --shutdown"; }
 
 ## Powershell
 alias pss="powershell.exe"
@@ -304,9 +303,9 @@ alias psc="powershell.exe -Command \"$*\""
 # Python
 alias python="python3"
 alias py="python"
-venv() { python3 -m venv ${1:-venv} ${@:2}; }
-vact() { source ${1:-venv}/bin/activate; }
-vdact() { deactivate; }
+function venv() { python3 -m venv ${1:-venv} ${@:2}; }
+function vact() { source ${1:-venv}/bin/activate; }
+function vdact() { deactivate; }
 alias dja="django-admin"
 
 ## Pip
@@ -328,7 +327,7 @@ alias wpy="psc py"
 alias wpip="psc py -m pip"
 
 ## Poetry
-poact() { eval "$(poetry env activate)"; }
+function poact() { eval "$(poetry env activate)"; }
 alias point="poetry init"
 alias poa="poetry add"
 alias pou="poetry remove"
