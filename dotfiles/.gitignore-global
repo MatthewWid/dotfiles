@@ -14,3 +14,7 @@
 
 # WSL Magic
 :Zone.Identifier
+
+# Justfiles
+justfile
+.justfile

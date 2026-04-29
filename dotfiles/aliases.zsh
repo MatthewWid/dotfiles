@@ -78,7 +78,7 @@ function tomp4() { ffmpeg -i "$1" -codec copy -strict experimental "$(echo \"$1\
 function tomp3() { ffmpeg -i "$1" -q:a 0 "$(echo \"$1\" | cut -f 1 -d '.').mp3"; }
 function ips() { ip -br a; }
 function vjson() { v "$(cat /dev/urandom | LC_ALL=C tr -dc a-zA-Z0-9 | head -c 12; echo '').ignore.json"; }
-function gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;; }
+function gitupdateall() { find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin $(git_main_branch) \;; }
 function urlencode() { printf %s "$1" | jq -s -R -r @uri; }
 function awscheck() { aws sts get-caller-identity; }
 function delzone() { find . -name '*:Zone.Identifier' -delete; }
@@ -142,11 +142,11 @@ alias gbm="git branch -m"
 function gdefb() { git branch -r | grep "HEAD -> " | xargs | cut -d " " -f 3 | cut -d "/" -f 2; }
 alias gc="git checkout"
 alias gcb="git checkout -b"
-function gcbm() { git checkout -b "$1" master; }
+function gcbm() { git checkout -b "$1" $(git_main_branch); }
 alias gf="git fetch"
 alias gfp="git fetch -p"
 function gfpd() { git fetch --prune | git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -d; }
-alias gfm="git fetch origin master:master"
+function gfm() { git fetch origin $(git_main_branch):$(git_main_branch); }
 alias gsm="git submodule"
 alias gsmu="git submodule update --init --recursive"
 function gst() { git stash push --include-untracked $@; }
@@ -160,7 +160,7 @@ alias grb="git rebase"
 alias grbc="git rebase --continue"
 alias grba="git rebase --abort"
 alias grbi="git rebase --interactive"
-alias grbim="git rebase --interactive master"
+function grbim() { git rebase --interactive $(git_main_branch); }
 alias grl="git reflog --date=relative"
 alias gcp="git cherry-pick"
 alias gup="cd \$(git rev-parse --show-toplevel)"
@@ -263,6 +263,7 @@ alias tmka="tmux kill-server"
 alias tmkab="tmux kill-session -a -t $1"
 alias tsf="tmux source-file ~/.tmux.conf"
 alias mux="tmuxinator"
+alias muxs="tmuxinator start"
 
 # Docker
 alias docol="docker container ls -a"
