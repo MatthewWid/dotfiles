@@ -377,6 +377,12 @@ command Ccr silent !CocRestart
 " Toggle inline type hints
 command Cth CocCommand document.toggleInlayHint
 
+" ------------------------------ vim-gitgutter
+
+" Jump to next and previous hunks
+nmap <silent> ]g :GitGutterNextHunk<CR>
+nmap <silent> [g :GitGutterPrevHunk<CR>
+
 " ------------------------------ winresizer
 
 " Enter resize mode with C-w-r
