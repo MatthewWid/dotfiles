@@ -432,6 +432,9 @@ nmap <silent> <C-_> :BLines<CR>
 " :B to :Buffers
 command! B :Buffers
 
+" :G to git modified files
+command! G :GF?
+
 " C-i and C-v to open selected fzf result in horizontal and vertical splits
 let g:fzf_action = {
   \ 'ctrl-i': 'split',
