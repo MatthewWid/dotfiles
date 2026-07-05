@@ -105,11 +105,10 @@ sudo -v
 
 # Node, package managers and global packages
 echo "== Installing Node and other package managers =="
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-nvm install --lts
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd --shell bash)"
+fnm install --lts
 npm install -g \
 	npm@latest \
 	pnpm \

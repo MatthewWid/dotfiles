@@ -5,6 +5,7 @@ VISUAL="${VISUAL:-neovim}"
 # Configuration file editing
 alias za="$EDITOR $ZSH_CUSTOM/aliases.zsh"
 alias zrc="$EDITOR ~/.zshrc"
+alias zpro="zrc"
 alias omzc="$EDITOR ~/.oh-my-zsh"
 alias tcf="$EDITOR ~/.tmux.conf"
 alias gig="$EDITOR ~/.gitignore-global"
@@ -51,7 +52,7 @@ alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
 alias red="redis-cli"
-alias j="just"
+alias cai="crewai"
 
 # New commands
 alias cls="printf \"\033c\""
@@ -344,3 +345,9 @@ alias dnf="dotnet format"
 alias dnre="dotnet restore"
 alias dna="dotnet add package"
 alias dnu="dotnet remove package"
+
+# Just
+alias j="just"
+alias jl="just --list --unsorted"
+alias jt="j t"
+alias jf="j f"

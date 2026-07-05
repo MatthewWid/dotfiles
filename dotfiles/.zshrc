@@ -181,17 +181,15 @@ export LC_ALL=en_US.UTF-8
 # tj/n is doing its best malware impression and refuses to remove its own env vars after uninstall
 unset N_PREFIX
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Deno completions
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 
 # Fix CodeCompanion.nvim being unable to write LLM output to default directory
 # See https://github.com/yetone/avante.nvim/issues/315
 export XDG_RUNTIME_DIR="/tmp/"
+
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Load system-wide environment variables
 source /etc/environment
