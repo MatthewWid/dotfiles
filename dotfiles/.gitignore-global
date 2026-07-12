@@ -18,3 +18,5 @@
 # Justfiles
 justfile
 .justfile
+
+**/.claude/settings.local.json
