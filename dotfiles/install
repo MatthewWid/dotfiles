@@ -142,17 +142,11 @@ wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
 rm go1.24.2.linux-amd64.tar.gz
 
-# Vim plugin manager for NeoVim
-echo "== Installing NeoVim plugin manager =="
-curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
-	--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-sudo -v
-
 # NeoVim plugin install without opening interactively
+# (lazy.nvim self-bootstraps from init.lua on first launch)
 echo "== Installing NeoVim plugins =="
 DISPLAY= python3 -v -m pip install --user --upgrade pynvim
-nvim +'PlugInstall --sync' +qa
+nvim --headless "+Lazy! sync" +qa
 
 sudo -v
 
