@@ -160,6 +160,7 @@ alias gm="git merge"
 alias grb="git rebase"
 alias grbc="git rebase --continue"
 alias grba="git rebase --abort"
+alias grbs="git rebase --skip"
 alias grbi="git rebase --interactive"
 function grbim() { git rebase --interactive $(git_main_branch); }
 alias grl="git reflog --date=relative"

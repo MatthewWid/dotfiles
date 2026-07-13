@@ -1,0 +1,8 @@
+# Force LF line endings for text files regardless of a machine's local
+# core.autocrlf setting, so checkouts stay consistent on Linux.
+* text=auto eol=lf
+
+# Known binaries — never touch line endings
+*.png binary
+*.bin binary
+*.skl binary

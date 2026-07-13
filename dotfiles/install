@@ -175,6 +175,16 @@ curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/downl
 	chmod +x chatgpt && \
 	sudo mv chatgpt /usr/local/bin/
 
+# Install Claude Code CLI (auth via `claude login`/`claude setup-token` is a
+# separate, deliberately non-interactive step, not run here)
+echo "== Installing Claude Code CLI =="
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Install GitHub Copilot CLI (auth via `copilot` on first run is a separate,
+# deliberately non-interactive step, not run here)
+echo "== Installing GitHub Copilot CLI =="
+curl -fsSL https://gh.io/copilot-install | bash
+
 # Install htmlq
 cargo install htmlq
 

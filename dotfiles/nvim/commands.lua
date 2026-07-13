@@ -26,6 +26,6 @@ vim.api.nvim_create_user_command("Ct", "checktime", {})
 -- Quickly set fold level
 vim.api.nvim_create_user_command("Fl", "set foldlevel=<args>", { nargs = 1 })
 
--- :Pins installs plugins, :Pclean cleans unused plugins (was vim-plug)
+-- :Pins installs plugins, :Pclean cleans unused plugins
 vim.api.nvim_create_user_command("Pins", "Lazy install", {})
 vim.api.nvim_create_user_command("Pclean", "Lazy clean", {})

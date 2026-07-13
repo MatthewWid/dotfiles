@@ -4,6 +4,8 @@ return {
 	event = "VeryLazy",
 	dependencies = { "itchyny/vim-gitbranch" },
 	init = function()
+		require("plugins.lightline.autocmds").setup()
+
 		-- Get truncated filename and change symbol
 		_G.LightlineFilename = function()
 			local filename = vim.fn.expand("%:t") ~= "" and vim.fn.expand("%:t") or "[No Name]"

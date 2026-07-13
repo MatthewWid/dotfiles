@@ -32,13 +32,23 @@ return {
 				},
 				-- C-i and C-v to open selected result in horizontal and vertical splits
 				-- C-j and C-k to move down and up the results list (fzf-style)
+				-- Esc to quit straight from insert mode
+				-- C-u falls through to Vim's native clear-to-start-of-line
+				-- instead of Telescope's default "scroll previewer up"
 				mappings = {
 					i = {
 						["<C-i>"] = actions.select_horizontal,
 						["<C-v>"] = actions.select_vertical,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
+						["<esc>"] = actions.close,
+						["<C-u>"] = false,
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
 				},
 			},
 		})

@@ -2,7 +2,7 @@
 return {
 	"olimorris/codecompanion.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-	cmd = { "CodeCompanion", "CodeCompanionChat", "CC", "Cc", "CCc", "Ccc", "Ch", "Ccl" },
+	cmd = { "CodeCompanion", "CodeCompanionChat", "CC", "Cc", "C", "CCc", "Ccc", "Ch" },
 	config = function()
 		require("codecompanion").setup({
 			interactions = {
@@ -12,22 +12,12 @@ return {
 					},
 				},
 			},
-			adapters = {
-				acp = {
-					-- Spawns the `claude` CLI via ACP. No auth config needed:
-					-- it inherits whatever `claude login` session is already
-					-- active, same as running `claude` in a terminal.
-					claude_code = function()
-						return require("codecompanion.adapters").extend("claude_code", {})
-					end,
-				},
-			},
 			strategies = {
 				chat = {
-					adapter = "copilot",
+					adapter = "copilot_acp",
 				},
 				inline = {
-					adapter = "copilot",
+					adapter = "copilot_acp",
 				},
 			},
 			display = {
