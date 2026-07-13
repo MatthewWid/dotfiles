@@ -54,7 +54,11 @@ return {
 		vim.lsp.config("jsonls", {
 			settings = {
 				json = {
-					schemas = require("schemastore").json.schemas(),
+					-- jsr.json isn't in schemastore.nvim's catalog, ported
+					-- from the old coc-settings.json manually
+					schemas = vim.list_extend(require("schemastore").json.schemas(), {
+						{ fileMatch = { "jsr.json" }, url = "https://jsr.io/schema/config-file.v1.json" },
+					}),
 					validate = { enable = true },
 				},
 			},

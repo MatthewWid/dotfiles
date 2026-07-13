@@ -73,6 +73,12 @@ run() {
 	setup $1 .fdignore & \
 	setup $1 .inputrc & \
 	setup $1 .gdbinit & \
+	# Global Prettier defaults, used only for projects with no prettierrc of
+	# their own — Prettier's own config search walks up through ancestor
+	# directories and a closer project-level config always wins, so this
+	# purely acts as a fallback (verified empirically with
+	# `prettier --find-config-path`).
+	setup $1 .prettierrc.json ~/.prettierrc.json & \
 	setup $1 nvim/ ~/.config/nvim/ & \
 	setup $1 .zshrc & \
 	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh & \

@@ -2,6 +2,10 @@ local M = {}
 
 M.keys = {
 	{ "<leader>H", function() require("grug-far").open() end, desc = "Search and replace" },
+	-- May not register as distinct from <C-f> in some terminals — Shift
+	-- doesn't change the control byte sent for Ctrl+letter unless the
+	-- terminal/tmux support the Kitty keyboard protocol or similar
+	{ "<C-S-f>", function() require("grug-far").open() end, desc = "Search and replace" },
 	{
 		"<leader>hw",
 		function()
