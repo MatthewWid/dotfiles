@@ -2,7 +2,7 @@
 	name = Matthew W.
 	email = matthew.widdi@gmail.com
 [core]
-	autocrlf = input
+	autocrlf = true
 	excludesFile = ~/.gitignore-global
 	eol = lf
 [rebase]

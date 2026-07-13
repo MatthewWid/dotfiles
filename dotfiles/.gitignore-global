@@ -19,4 +19,32 @@
 justfile
 .justfile
 
-**/.claude/settings.local.json
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Linux
+.directory
+.Trash-*
+
+# JetBrains IDEs (local project state)
+.idea/
+
+# Environment/secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Claude Code (settings.json is shared/committed; this is personal-only)
+.claude/settings.local.json

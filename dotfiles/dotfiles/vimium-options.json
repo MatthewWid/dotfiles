@@ -1,0 +1,146 @@
+{
+  "settingsVersion": "1.67.4",
+  "exclusionRules": [
+    {
+      "pattern": "https?://www.reddit.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://old.reddit.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://calendar.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://haxplore.pabue.co/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://haxplore.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://hexed.it/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.typingclub.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://academy.hackthebox.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://chih.github.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.nytimes.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://client.blitzadultparty.ru/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.cuntempire.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://v6p9d9t4.ssl.hwcdn.net/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://dedandburydgames.itch.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.twitch.tv/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.keybr.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://leetcode.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://configure.zsa.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://zyngapoker.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://10fastfingers.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://bonk.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://snowglobe-fps-fn7hr.ondigitalocean.app/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://editor.puter.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://zombs.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.ultimate-guitar.com/contribution/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://dustinbrett.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.beatsperminuteonline.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.concerthotels.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://desktop.leisink.net/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://np.reddit.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.\nmap H previousTab\nmap L nextTab\nmap J goForward\nmap K goBack\nmap c LinkHints.activateMode\nmap C LinkHints.activateModeToOpenInNewTab\nmap < moveTabLeft\nmap > moveTabRight",
+  "linkHintCharacters": "qwerasdfzxcvtg",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 50,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\ny: https://www.youtube.com/results?search_query=%s Youtube\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "/* Link Hints */\n\ndiv.vimiumHintMarker {\n    background: #404552 !important;\n    border: 1px solid #5294e2 !important;\n    box-shadow: none !important;\n}\n\ndiv.vimiumHintMarker span {\n    color: #D3DAE3 !important;\n    font-family: monospace !important;\n    font-weight: bold !important;\n    font-size: 16px !important;\n    text-shadow: none !important;\n}\n\ndiv.vimiumHintMarker > .matchingCharacter {\n    color: #a9caf1 !important;\n}\n\n/* HUD */\n\niframe.vimiumHUDFrame {\n    height: 30px;\n    min-height: 30px;\n}\n\ndiv.vimiumHUD {\n    background-color: #222;\n    border-color: #f4f;\n    border-radius: 0;\n    border-style: solid;\n    border-width: 0 3px 0 0;\n    color: #f4f;\n    font-weight: bold;\n    padding: 8px;\n    text-shadow: none;\n}\n\n/* Vomnibar */\n\n#vomnibar {\n    background: #333;\n    border-radius: 0;\n    box-shadow: none;\n}\n\n#vomnibar .vomnibarSearchArea {\n    background-color: #222;\n    border: none;\n    border-color: #f4f;\n    border-radius: 0;\n    border-style: solid;\n    border-width: 0 0 0 4px;\n}\n\n#vomnibar .vomnibarSearchArea > input {\n    background-color: #222;\n    border: none;\n    color: #f4f;\n}\n\n#vomnibar ul {\n    background-color: #333;\n    border-radius: 0;\n}\n\n#vomnibar li {\n    background-color: transparent;\n    border-color: #F8F;\n    border-style: solid;\n    border-width: 0;\n    margin-top: 10px;\n    transition: background-color 0.1s ease;\n}\n\n#vomnibar li em,\n#vomnibar li .vomnibarTitle {\n    color: #fff;\n}\n\n#vomnibar li em .vomnibarMatch,\n#vomnibar li .vomnibarTitle .vomnibarMatch,\n#vomnibar li .vomnibarMatch {\n    color: #f4f;\n}\n\n#vomnibar li .vomnibarUrl {\n    color: #ccc;\n}\n\n#vomnibar li.vomnibarSelected {\n    background-color: #444;\n}"
+}
