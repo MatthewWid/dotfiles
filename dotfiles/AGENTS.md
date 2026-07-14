@@ -1,5 +1,3 @@
-# Dotfiles
-
 This repository contains my personal dotfiles. I am an experienced software engineer who mostly works on web-based application development.
 
 I primary work in TypeScript (JavaScript), Python and .NET.
@@ -42,8 +40,6 @@ path/snippets). Fuzzy finding via `telescope.nvim`.
 Deployed to the live system via `dotfiles/sync link`, which must be run from inside the Dropbox
 copy of this the source files (not the git directory) for the symlinks to point at the right place.
 
-#### Caveats
-
 Plugins are lazy-loaded. A custom `vim.api.nvim_create_user_command(...)` defined inside a
 plugin's `config` function doesn't exist until that plugin has already loaded — it also needs to
 be listed in that plugin's `cmd = {...}` table, or calling it raises `E492: Not an editor
@@ -56,7 +52,7 @@ live test.
 
 ## Commits
 
-My `dotfiles-sync` project runs a job once every day to pull the latest changes from Dropbox and commit them to this repository.
+My dotfiles-sync project runs a job once every day to pull the latest changes from Dropbox and commit them to this repository.
 
 Its commits are formatted as follows:
 
@@ -70,4 +66,4 @@ If you ever write a commit to this repository, please use the following format:
 chore: manual backup - Day, DD Mon YYYY HH:MM:SS GMT
 ```
 
-NEVER push changes to the remote without asking. NEVER copy to Dropbox without asking. If you do get confirmation that you may push, that confirmation is only for that one instance you are requesting. If you would like to push again, you MUST ask for permission again.
+NEVER push changes to the remote without asking.

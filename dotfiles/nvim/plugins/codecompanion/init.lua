@@ -2,7 +2,7 @@
 return {
 	"olimorris/codecompanion.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-	cmd = { "CodeCompanion", "CodeCompanionChat", "CC", "Cc", "C", "CCc", "Ccc", "Ch" },
+	cmd = { "CodeCompanion", "CodeCompanionChat", "CC", "Cc", "C", "CCc", "Ccc", "Ch", "Ccl" },
 	config = function()
 		require("codecompanion").setup({
 			interactions = {
@@ -12,6 +12,8 @@ return {
 					},
 				},
 			},
+			-- claude_code, copilot_acp, etc. are all pre-registered presets;
+			-- no explicit `adapters` config needed unless overriding one
 			strategies = {
 				chat = {
 					adapter = "copilot_acp",

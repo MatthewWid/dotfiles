@@ -4,6 +4,9 @@ return {
 	event = "VeryLazy",
 	dependencies = { "itchyny/vim-gitbranch" },
 	init = function()
+		-- init (unlike config) always runs at startup regardless of when
+		-- lightline itself lazy-loads, so this is registered before
+		-- Telescope could ever be opened
 		require("plugins.lightline.autocmds").setup()
 
 		-- Get truncated filename and change symbol
