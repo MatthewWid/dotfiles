@@ -73,20 +73,12 @@ run() {
 	setup $1 .fdignore & \
 	setup $1 .inputrc & \
 	setup $1 .gdbinit & \
-	# Global Prettier defaults, used only for projects with no prettierrc of
-	# their own — Prettier's own config search walks up through ancestor
-	# directories and a closer project-level config always wins, so this
-	# purely acts as a fallback (verified empirically with
-	# `prettier --find-config-path`).
 	setup $1 .prettierrc.json ~/.prettierrc.json & \
+	setup $1 .claude/settings.json ~/.claude/settings.json & \
 	setup $1 nvim/ ~/.config/nvim/ & \
 	setup $1 .zshrc & \
 	setup $1 aliases.zsh $ZSH_CUSTOM/aliases.zsh & \
 	setup $1 bin/devenv ~/bin/devenv & \
-	# Sync ranger/ as a single directory, not per-file: ~/.config/ranger has
-	# historically been a directory-level symlink straight into the Dropbox
-	# source, so per-file setup() calls would back up/relink *through* that
-	# symlink and end up writing over the real source files themselves.
 	setup $1 ranger/ ~/.config/ranger/ & \
 	setup $1 bat/config ~/.config/bat/config & \
 	wait

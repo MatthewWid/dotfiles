@@ -1,6 +1,11 @@
 -- LSP client configuration + server installation (replaces coc.nvim)
 return {
 	"neovim/nvim-lspconfig",
+	-- Previously had no lazy-load trigger at all, so this whole stack (plus
+	-- mason.nvim, mason-lspconfig.nvim, cmp-nvim-lsp, schemastore.nvim) was
+	-- loading eagerly on every Neovim startup, even when no file was ever
+	-- opened. Matches nvim-treesitter's own trigger for consistency.
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} },
 		{

@@ -1,7 +1,8 @@
 local M = {}
 
 M.keys = {
-	{ "<leader>cc", ":NerdCommenterToggle<CR>", mode = "v", silent = true },
+	{ "<leader>cc", "<Plug>NERDCommenterToggle", mode = { "n", "v" }, remap = true },
+	{ "<leader>c<space>", "<Plug>NERDCommenterToggle", mode = { "n", "v" }, remap = true },
 }
 
 return M

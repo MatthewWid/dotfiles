@@ -2,7 +2,7 @@
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
-	cmd = { "Prettier" },
+	cmd = { "Prettier", "P" },
 	config = function()
 		local prettier_filetypes = {
 			"javascript",

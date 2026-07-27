@@ -1,0 +1,14 @@
+{
+  "effortLevel": "medium",
+  "theme": "dark",
+  "editorMode": "vim",
+  "model": "sonnet",
+  "includeCoAuthoredBy": false,
+  "cleanupPeriodDays": 90,
+  "fileCheckpointingEnabled": true,
+  "permissions": {
+    "allow": [
+      "Read(./**)"
+    ]
+  }
+}

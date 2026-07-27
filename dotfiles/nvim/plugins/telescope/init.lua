@@ -53,7 +53,5 @@ return {
 			},
 		})
 		require("telescope").load_extension("fzf")
-
-		require("plugins.telescope.keymaps").setup_commands()
 	end,
 }

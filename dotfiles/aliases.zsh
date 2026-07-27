@@ -351,3 +351,7 @@ alias j="just"
 alias jl="just --list --unsorted"
 alias jt="j t"
 alias jf="j f"
+
+# Claude
+alias cc="claude"
+alias ccr="claude --resume"
