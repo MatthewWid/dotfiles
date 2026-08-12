@@ -1,14 +1,14 @@
 {
-  "effortLevel": "medium",
-  "theme": "dark",
-  "editorMode": "vim",
-  "model": "sonnet",
-  "includeCoAuthoredBy": false,
   "cleanupPeriodDays": 90,
-  "fileCheckpointingEnabled": true,
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Read(./**)"
     ]
-  }
+  },
+  "model": "sonnet",
+  "effortLevel": "high",
+  "theme": "dark",
+  "editorMode": "vim",
+  "fileCheckpointingEnabled": true
 }
