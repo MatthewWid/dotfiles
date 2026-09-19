@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Fetch a file or directory, backup and delete existing copies and create directories.
 # A SRC with a trailing slash is treated as a directory (fetched/linked/cleared recursively)
 # rather than a single file.
