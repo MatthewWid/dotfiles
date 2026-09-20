@@ -2,6 +2,7 @@
 EDITOR="${EDITOR:-neovim}"
 VISUAL="${VISUAL:-neovim}"
 
+
 # Configuration file editing
 alias za="$EDITOR $ZSH_CUSTOM/aliases.zsh"
 alias zrc="$EDITOR ~/.zshrc"
@@ -84,6 +85,7 @@ function urlencode() { printf %s "$1" | jq -s -R -r @uri; }
 function awscheck() { aws sts get-caller-identity; }
 function delzone() { find . -name '*:Zone.Identifier' -delete; }
 function uncorrupt() { mv "$1" "$1.bad"; strings "$1.bad" > "$1"; }
+function lights() { sudo python ./g560-led.py solid E86100; }
 
 # Dotfiles
 DOTFILES_BASE_URL="https://raw.githubusercontent.com/MatthewWid/dotfiles/refs/heads/master/dotfiles"

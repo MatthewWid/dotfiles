@@ -193,3 +193,10 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Load system-wide environment variables
 source /etc/environment
+
+# fnm
+FNM_PATH="/home/mwx/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
