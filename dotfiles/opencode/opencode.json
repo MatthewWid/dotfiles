@@ -1,0 +1,21 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"provider": {
+		"ollama": {
+			"npm": "@ai-sdk/openai-compatible",
+			"name": "Ollama (local)",
+			"options": {
+				"baseURL": "http://127.0.0.1:11434/v1"
+			},
+			"models": {
+				"hf.co/mradermacher/Ornith-1.5-9B-uncensored-GGUF:Q4_K_M": {
+					"name": "Ornith 9B (uncensored)"
+				},
+				"gemma4:e4b": {
+					"name": "Gemma 4 E4B"
+				}
+			}
+		}
+	},
+	"model": "gemma4:e4b"
+}

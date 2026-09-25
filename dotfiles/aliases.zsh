@@ -49,11 +49,12 @@ alias findalias="alias"
 alias open="npm_config_yes=true npx open-cli"
 alias chm="chmod"
 alias cho="chown"
-alias gpt="chatgpt"
 alias cah="bat"
 alias tf="terraform"
 alias red="redis-cli"
+alias gpt="chatgpt"
 alias cai="crewai"
+alias ol="ollama"
 
 # New commands
 alias cls="printf \"\033c\""
