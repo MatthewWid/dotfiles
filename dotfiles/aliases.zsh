@@ -55,6 +55,7 @@ alias red="redis-cli"
 alias gpt="chatgpt"
 alias cai="crewai"
 alias ol="ollama"
+alias oc="opencode"
 
 # New commands
 alias cls="printf \"\033c\""
@@ -358,3 +359,7 @@ alias jf="j f"
 # Claude
 alias cc="claude"
 alias ccr="claude --resume"
+
+# Copilot
+alias cop="copilot"
+alias copr="copilot --resume"
