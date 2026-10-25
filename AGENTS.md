@@ -6,7 +6,8 @@ I primary work in TypeScript (JavaScript), Python and .NET.
 
 I have an entirely terminal-based setup.
 
-- Windows 11 with WSL 2 running Linux/Ubuntu
+- Fedora 44 KD
+    - Occasionally dual-boot to Windows 11 with WSL 2 running Linux/Ubuntu
 - tmux
 - zsh + Oh My Zsh
 - NeoVim
@@ -20,6 +21,8 @@ I prefer using pnpm for JS/TS package management, but npm for global packages.
 I prefer using fnm for Node.js version management, but some projects I work on use nvm.
 
 Dropbox is running in the background of the Windows host which continually syncs my dotfiles to the cloud, though you may not see Dropbox appear in the WSL process list. Be prepared that you may be momentarily unable to modify files again just after they have been modified, as Dropbox holds a handle on the file while it is syncing.
+
+When editing dotfiles, keep the GitHub repository checkout and the Dropbox copy in sync: changes made in either location must also be applied to the other.
 
 ### NeoVim
 

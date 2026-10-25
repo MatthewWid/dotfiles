@@ -184,19 +184,17 @@ unset N_PREFIX
 # Deno completions
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 
-# Fix CodeCompanion.nvim being unable to write LLM output to default directory
+# Preserve the session runtime directory for Wayland and other desktop services.
+# Fall back to /tmp only when no runtime directory is provided.
 # See https://github.com/yetone/avante.nvim/issues/315
-export XDG_RUNTIME_DIR="/tmp/"
-
-# fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/}"
 
 # Load system-wide environment variables
 source /etc/environment
 
 # fnm
-FNM_PATH="/home/mwx/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
+FNM_PATH="$HOME/.local/share/fnm"
+if [[ -x "$FNM_PATH/fnm" ]]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi

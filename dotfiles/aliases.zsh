@@ -32,6 +32,7 @@ alias fgrep="grep -F"
 alias egrep="grep -E"
 alias cp="cp -r"
 alias htmlq="htmlq --pretty"
+alias rp="realpath"
 
 # Command shortcuts
 alias v="$EDITOR"
@@ -99,6 +100,8 @@ function gettsconfig() { wget --quiet -O tsconfig.json "$DOTFILES_BASE_URL/tscon
 
 # Git
 alias gint="git init"
+alias groot="git rev-parse --show-toplevel"
+function grp() { realpath --relative-to="$(groot)" "${@:-.}"; }
 function gclo() { git clone "$@"; cd "$(basename "$1" .git)"; }
 alias gl="git log --pretty=format:'%C(yellow)%h %Cblue%ad %Cgreen%d %Creset%s' --date=relative"
 alias gla="gl --all --graph"
@@ -168,7 +171,7 @@ alias grbi="git rebase --interactive"
 function grbim() { git rebase --interactive $(git_main_branch); }
 alias grl="git reflog --date=relative"
 alias gcp="git cherry-pick"
-alias gup="cd \$(git rev-parse --show-toplevel)"
+alias gup='cd "$(groot)"'
 
 # Node
 alias nv="nvm"

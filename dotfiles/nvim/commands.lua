@@ -17,6 +17,31 @@ vim.api.nvim_create_user_command("Path", "echo @%", {})
 vim.api.nvim_create_user_command("Pa", "echo @%", {})
 vim.api.nvim_create_user_command("PA", "echo @%", {})
 
+local function copy_buffer_path(absolute)
+	local path = vim.fn.expand("%:p")
+	if path == "" then
+		error("Current buffer has no file path")
+	end
+
+	if not absolute then
+		local git_root = vim.fn.FugitiveWorkTree()
+		if git_root == "" then
+			error("Current buffer is not inside a Git repository")
+		end
+		path = vim.fs.relpath(vim.trim(git_root), path)
+	end
+
+	vim.fn.setreg("+", path)
+	vim.api.nvim_echo({ { "Copied: " .. path, "MoreMsg" } }, false, {})
+end
+
+vim.api.nvim_create_user_command("Cp", function()
+	copy_buffer_path(false)
+end, {})
+vim.api.nvim_create_user_command("Cap", function()
+	copy_buffer_path(true)
+end, {})
+
 -- Toggle line breaking
 vim.api.nvim_create_user_command("Nr", "set wrap!", {})
 
