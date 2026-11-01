@@ -42,6 +42,20 @@ vim.api.nvim_create_user_command("Cap", function()
 	copy_buffer_path(true)
 end, {})
 
+vim.api.nvim_create_user_command("Ga", function()
+	local path = vim.fn.expand("%:p")
+	if path == "" then
+		error("Current buffer has no file path")
+	end
+
+	local output = vim.fn.system({ "git", "-C", vim.fs.dirname(path), "add", "--", path })
+	if vim.v.shell_error ~= 0 then
+		error(vim.trim(output))
+	end
+
+	vim.api.nvim_echo({ { "Added: " .. path, "MoreMsg" } }, false, {})
+end, {})
+
 -- Toggle line breaking
 vim.api.nvim_create_user_command("Nr", "set wrap!", {})
 

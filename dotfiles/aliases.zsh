@@ -2,7 +2,6 @@
 EDITOR="${EDITOR:-neovim}"
 VISUAL="${VISUAL:-neovim}"
 
-
 # Configuration file editing
 alias za="$EDITOR $ZSH_CUSTOM/aliases.zsh"
 alias zrc="$EDITOR ~/.zshrc"
@@ -56,7 +55,6 @@ alias red="redis-cli"
 alias gpt="chatgpt"
 alias cai="crewai"
 alias ol="ollama"
-alias oc="opencode"
 
 # New commands
 alias cls="printf \"\033c\""
@@ -258,7 +256,7 @@ function cup() { curl --request POST "$1" --data "$2"; }
 # tmux
 alias tm="tmux"
 alias tmls="tmux ls"
-function tmn() { tmux new-session -s $1 -d; tmux switch-client -t $1; }
+function tmn() { tmux new-session -s "$1" -d && tmux switch-client -t "$1" && exit; }
 alias tmal="tmux attach-session"
 alias tmal.="tmux attach-session -c $(pwd)"
 alias tman="tmux attach-session -t $1"
@@ -366,3 +364,7 @@ alias ccr="claude --resume"
 # Copilot
 alias cop="copilot"
 alias copr="copilot --resume"
+
+# omp
+alias p="omp"
+alias pr="omp --resume"

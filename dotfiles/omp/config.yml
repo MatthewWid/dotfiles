@@ -1,0 +1,13 @@
+modelRoles:
+  default: deepseek/deepseek-flash
+symbolPreset: nerd
+composer:
+  shape: borderless
+  tokenRate: true
+theme:
+  dark: titanium
+  light: light
+setupVersion: 2
+defaultThinkingLevel: auto
+startup:
+  setupWizard: false

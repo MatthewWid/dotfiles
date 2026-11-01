@@ -118,6 +118,9 @@ export DOCKER_HOST="unix:///var/run/docker.sock"
 # Local bin path
 export PATH="$HOME/.local/bin:$PATH"
 
+# Cargo bin path
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Golang bin path
 export PATH="$PATH:/usr/local/go/bin"
 
@@ -156,7 +159,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Auto-launch into tmux session
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if [ ! -f "$HOME/.noautotmux" ] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 	exec tmux
 fi
 

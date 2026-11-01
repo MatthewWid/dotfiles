@@ -1,6 +1,6 @@
 This repository contains my personal dotfiles. I am an experienced software engineer who mostly works on web-based application development.
 
-I primary work in TypeScript (JavaScript), Python and .NET.
+I primarily work in TypeScript (JavaScript), Python and .NET.
 
 ## Development Environment
 
@@ -20,6 +20,12 @@ I prefer using pnpm for JS/TS package management, but npm for global packages.
 I prefer using fnm for Node.js version management, but some projects I work on use nvm.
 
 Dropbox is running in the background of the Windows host which continually syncs my dotfiles to the cloud, though you may not see Dropbox appear in the WSL process list. Be prepared that you may be momentarily unable to modify files again just after they have been modified, as Dropbox holds a handle on the file while it is syncing.
+
+## Install Scripts
+
+I have pre-made install scripts that can set up a machine from a fresh install to ready-for-development.
+
+They are separated per-distro: `./install.*.sh` but when updating one you should update the others so they stay in sync.
 
 ### NeoVim
 

@@ -102,8 +102,8 @@ is_wsl() {
 
 DO_BASE_PACKAGES=false; DO_ZSH=false; DO_NODE=false; DO_PYTHON=false
 DO_DOTNET_TOOLS=false; DO_GOLANG=false; DO_NVIM_PLUGINS=false; DO_RUST=false
-DO_TMUX_PLUGINS=false; DO_FZF=false; DO_EXTRA_CLI=false
-DO_FONTS=false; DO_CHATGPT=false; DO_SSH=false; DO_DOCKER=false
+DO_TMUX_PLUGINS=false; DO_FZF=false; DO_EXTRA_CLI=false; DO_OMP=false
+DO_FONTS=false; DO_CHATGPT=false; DO_SSH=false; DO_DOCKER=false; DO_OLLAMA=false
 
 echo
 echo "Every group of installs below can be skipped - answer now, the rest of the"
@@ -112,7 +112,7 @@ echo
 if ask_yn "Install everything below with its defaults? (fastest - answer 'n' to pick individually)"; then
 	DO_BASE_PACKAGES=true; DO_ZSH=true; DO_NODE=true; DO_PYTHON=true
 	DO_DOTNET_TOOLS=true; DO_GOLANG=true; DO_NVIM_PLUGINS=true; DO_RUST=true
-	DO_TMUX_PLUGINS=true; DO_FZF=true; DO_EXTRA_CLI=true
+	DO_TMUX_PLUGINS=true; DO_FZF=true; DO_EXTRA_CLI=true; DO_OMP=true
 else
 	ask_yn "Install the main package list (dev tools, CLI utilities, etc. via dnf)?" && DO_BASE_PACKAGES=true
 	ask_yn "Install Oh My Zsh (theme + plugins)?" && DO_ZSH=true
@@ -125,6 +125,7 @@ else
 	ask_yn "Install the tmux plugin manager (tpm)?" && DO_TMUX_PLUGINS=true
 	ask_yn "Install fzf?" && DO_FZF=true
 	ask_yn "Install extra CLI tools (htmlq, yq)?" && DO_EXTRA_CLI=true
+	ask_yn "Install Oh My Pi (omp coding agent)?" && DO_OMP=true
 fi
 
 echo
@@ -133,6 +134,7 @@ ask_yn "Install Microsoft core fonts?" && DO_FONTS=true
 ask_yn "Install the ChatGPT CLI?" && DO_CHATGPT=true
 ask_yn "Generate a new SSH key (~/.ssh/id_ed25519)?" && DO_SSH=true
 ask_yn "Install Docker (native Engine on Linux or inside WSL)?" && DO_DOCKER=true
+ask_yn "Install Ollama?" && DO_OLLAMA=true
 
 # --- Section: repos ----------------------------------------------------------
 # Fedora has no PPAs. dnf-plugins-core gives us `dnf config-manager`, RPM
@@ -234,6 +236,15 @@ section_node() {
 	eval "$(fnm env --use-on-cd --shell bash)"
 	fnm install --lts || echo "  !! fnm install --lts failed, continuing..." >&2
 	npm_install_each "${NPM_PACKAGES[@]}"
+}
+
+# --- Section: Oh My Pi (omp coding agent) -------------------------------------
+# The installer drops a prebuilt binary in ~/.local/bin/omp; bun is optional
+# and not installed here.
+
+section_omp() {
+	curl -fsSL https://omp.sh/install | sh \
+		|| echo "  !! omp install failed, continuing..." >&2
 }
 
 # --- Section: Python global packages -----------------------------------------
@@ -382,6 +393,32 @@ section_docker() {
 	fi
 }
 
+# --- Section (optional): Ollama ---------------------------------------------
+
+section_ollama() {
+	if ! command -v ollama &> /dev/null; then
+		curl -fsSL https://ollama.com/install.sh | sh || return 1
+	fi
+
+	if [ -d /run/systemd/system ]; then
+		sudo systemctl enable --now ollama || return 1
+	elif ! ollama list &> /dev/null; then
+		mkdir -p "$HOME/.ollama"
+		nohup ollama serve > "$HOME/.ollama/serve.log" 2>&1 < /dev/null &
+		echo "  Started Ollama in the background; see ~/.ollama/serve.log for service output."
+	fi
+
+	local attempt=0
+	until ollama list &> /dev/null; do
+		attempt=$((attempt + 1))
+		if [ "$attempt" -ge 30 ]; then
+			echo "  !! Ollama did not become available; see ~/.ollama/serve.log for details." >&2
+			return 1
+		fi
+		sleep 1
+	done
+}
+
 # --- Section (optional): SSH keys ---------------------------------------------
 
 section_ssh_keys() {
@@ -416,6 +453,7 @@ $DO_ZSH && run_section "Installing Oh My Zsh" section_ohmyzsh
 $DO_ZSH && run_section "Installing zsh theme" section_zsh_theme
 $DO_ZSH && run_section "Installing Oh My Zsh plugins" section_zsh_plugins
 $DO_NODE && run_section "Installing Node and npm globals" section_node
+$DO_OMP && run_section "Installing Oh My Pi (omp)" section_omp
 $DO_PYTHON && run_section "Installing Python global packages" section_python
 $DO_DOTNET_TOOLS && run_section "Installing .NET global tools" section_dotnet
 $DO_GOLANG && run_section "Installing Golang" section_golang
@@ -428,6 +466,7 @@ $DO_EXTRA_CLI && run_section "Installing htmlq" section_htmlq
 $DO_EXTRA_CLI && run_section "Installing yq" section_yq
 run_section "Configuring locale" section_locale
 $DO_DOCKER && run_section "Setting up Docker" section_docker
+$DO_OLLAMA && run_section "Installing Ollama" section_ollama
 $DO_SSH && run_section "Generating SSH keys" section_ssh_keys
 run_section "Fetching dotfiles and scripts" section_dotfiles
 run_section "Setting zsh as default shell" section_chsh

@@ -79,6 +79,8 @@ run() {
 	setup $1 bin/devenv ~/bin/devenv & \
 	setup $1 ranger/ ~/.config/ranger/ & \
 	setup $1 bat/config ~/.config/bat/config & \
+	setup $1 omp/config.yml ~/.omp/agent/config.yml & \
+	setup $1 omp/keybindings.yml ~/.omp/agent/keybindings.yml & \
 	wait
 }
 

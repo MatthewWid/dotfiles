@@ -1,0 +1,8 @@
+# omp keybinding remaps: exact action ID -> chord or list of chords.
+# Defaults apply for any action not listed; a listed action replaces its
+# complete default chord list. See https://omp.sh/docs/keybindings
+#
+# app.model.cycleForward: f6
+# app.plan.toggle: f7
+# tui.editor.undo: [ctrl+-, ctrl+_]
+{}

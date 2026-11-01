@@ -123,6 +123,10 @@ npm install -g \
 	http-server \
 	@agentclientprotocol/claude-agent-acp
 
+# Oh My Pi (omp coding agent) - installer fetches a prebuilt binary to ~/.local/bin
+echo "== Installing Oh My Pi (omp) =="
+curl -fsSL https://omp.sh/install | sh
+
 sudo -v
 
 # Python and global packages
@@ -174,6 +178,30 @@ echo "== Installing ChatGPT CLI =="
 curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && \
 	chmod +x chatgpt && \
 	sudo mv chatgpt /usr/local/bin/
+
+# Install Ollama
+echo "== Installing Ollama =="
+if ! command -v ollama >/dev/null 2>&1; then
+	curl -fsSL https://ollama.com/install.sh | sh || exit 1
+fi
+
+if [ -d /run/systemd/system ]; then
+	sudo systemctl enable --now ollama || exit 1
+elif ! ollama list >/dev/null 2>&1; then
+	mkdir -p "$HOME/.ollama"
+	nohup ollama serve > "$HOME/.ollama/serve.log" 2>&1 < /dev/null &
+	echo "Started Ollama in the background; see ~/.ollama/serve.log for service output."
+fi
+
+ollama_attempt=0
+until ollama list >/dev/null 2>&1; do
+	ollama_attempt=$((ollama_attempt + 1))
+	if [ "$ollama_attempt" -ge 30 ]; then
+		echo "Ollama did not become available; see ~/.ollama/serve.log for details." >&2
+		exit 1
+	fi
+	sleep 1
+done
 
 # Install htmlq
 cargo install htmlq
