@@ -11,3 +11,5 @@ setupVersion: 2
 defaultThinkingLevel: auto
 startup:
   setupWizard: false
+display:
+  showTokenUsage: true

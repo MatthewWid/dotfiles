@@ -1,6 +1,7 @@
 # Custom Notes
 *.note*
 *.ignore*
+*.scratch*
 
 # Vim
 [._]*.s[a-v][a-z]
