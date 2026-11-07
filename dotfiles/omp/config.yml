@@ -13,3 +13,6 @@ startup:
   setupWizard: false
 display:
   showTokenUsage: true
+tui:
+  vimMode: true
+  vimModeDisplay: text
