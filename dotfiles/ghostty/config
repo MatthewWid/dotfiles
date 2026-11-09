@@ -10,3 +10,5 @@ window-decoration = client
 gtk-titlebar = true
 window-theme = ghostty
 confirm-close-surface = false
+# Keep mouse selections (including double-click word select) from auto-copying
+copy-on-select = false
